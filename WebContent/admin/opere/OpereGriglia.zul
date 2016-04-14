@@ -1,0 +1,76 @@
+<zk xmlns:n="native" >
+<grid id="grd_Opere" model="@bind(vm.list)"  vflex="true" hflex="1">
+
+<auxhead>
+       	<auxheader colspan="13" label="OPERA" style="text-align:center;"/>
+        <auxheader colspan="3" label="USER" style="text-align:center;"/>
+</auxhead>
+ 
+ <auxhead>
+       	<auxheader colspan="7" label="DETTAGLIO" style="text-align:center;"/>
+       	<auxheader colspan="3" label="GIURIA POP" style="text-align:center;"/>
+        <auxheader colspan="3" label="GIURIA CRIT" style="text-align:center;"/>
+        <auxheader colspan="3" label="DETTAGLIO" style="text-align:center;"/>
+</auxhead> 	
+  	
+  <columns>
+    <column label="Immagine" />
+    <column label="Id" />
+    <column label="Titolo" width="100px">  <textbox id="txt_operaTitolo" value="@bind(vm.ricerca.operaTitolo)" width="50px;"/> </column>
+    <column label="Descrizione" width="200px">  <textbox id="txt_operaDescrizione" value="@bind(vm.ricerca.operaDescrizione)" width="100px;"/> </column>
+   
+       <column label="Insert" />
+    <column label="Update" />
+    <column label="azione" />
+    
+    <column label="punti" />
+    <column label="media" />
+    <column label="num Feeds" />
+    
+    <column label="punti" />
+    <column label="media" />
+    <column label="num Feeds" />
+ 
+    
+     <column label="id" style="color:orange;">   <textbox id="txt_operaIdUser" value="@bind(vm.ricerca.operaIdUser)" width="30px;" /> </column>
+     <column label="nome" style="color:orange;"/>
+     <column label="cognome" style="color:orange;"/>
+     
+     
+  </columns>
+  <template name="model">
+    <row style="@load(each.opera.style)">
+      <image src="@load(vm.getImageWeb(each.img.immagineHash))" />
+    
+      <label value="@load(each.opera.operaId)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.opera.operaTitolo)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.opera.operaDescrizione)" />
+     
+      <datebox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.opera.operaInsert)" disabled="true"/>
+      <datebox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.opera.operaUpdate)" disabled="true"/>
+      
+      <div>
+	      <button width="75px" style="color:green;" label="attiva" onClick="@command('attiva',par=each)" visible="@load(not each.opera.active)" />
+	      <button width="75px" style="color:red;" label="disattiva" onClick="@command('disattiva',par=each)" visible="@load(each.opera.active)" />
+      </div>
+      
+      <label value="@load(each.opera.operaRatePop)" /> 
+      <label value="@load(vm.getMediaPopValue(each.opera))" /> 
+      <label value="@load(each.opera.operaRatePopFeeds)" />
+      
+      
+      <label value="@load(each.opera.operaRateCrit)" /> 
+      <label value="@load(vm.getMediaCritValue(each.opera))" /> 
+      <label value="@load(each.opera.operaRateCritFeeds)" />
+
+      	
+     
+	<label value="@load(each.user.userId)" />
+   	<label value="@load(each.user.userNome)" />
+   	<label value="@load(each.user.userCognome)" />
+   
+      
+    </row>
+  </template>
+</grid>
+</zk>

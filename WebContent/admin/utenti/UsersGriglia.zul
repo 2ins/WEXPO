@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grid id="grd_Users" model="@bind(vm.list)" vflex="true" hflex="1" >
+  <columns>
+  
+   <column label="Foto" > <separator/> <label value="*" /> </column>
+  
+    <column label="Id" > <separator/> <label value="*" /> </column>
+    <column label="Nome" ><separator/> <textbox value="@bind(vm.ricerca.userNome)" width="99%"/></column>
+    <column label="Cognome"> <separator/> <textbox value="@bind(vm.ricerca.userCognome)" width="99%"/></column>
+    <column label="Data Nascita" > <separator/> <label value="*" /> </column>
+    <column label="Luogo Residenza" > <separator/> <label value="*" /> </column>
+    <column label="Citta" > <separator/> <textbox id="txt_userCitta" value="@bind(vm.ricerca.userCitta)" width="99%"/> </column>
+    <column label="Nazione" > <separator/> <textbox id="txt_userNazione" value="@bind(vm.ricerca.userNazione)" width="99%"/> </column>
+   
+   <!--   <column label="Cv" />-->
+    <column label="Email" > <separator/> <textbox id="txt_userEmail" value="@bind(vm.ricerca.userEmail)" width="99%"/> </column>
+    <column label="Link" > <separator/> <label value="*" /> </column>
+   
+    <column label="Ruolo" > <separator/>
+    <combobox width="99%"
+     	model="@load(vm.ruoli)"
+      	selectedItem="@bind(vm.ricerca.ruolo)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.ruoloDescrizione)"/>
+        	</template>
+        </combobox>
+        </column>
+    <column label="attiva" > <separator/> <label value="*" /> </column>
+  </columns>
+  <template name="model">
+    <row style="@load(each.user.style)">
+    
+      <image width="50px" src="@load(vm.getImageWeb(each.img.immagineHash))" onClick="@command('openUtente')"/>
+          
+      <label value="@load(each.user.userId)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userNome)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userCognome)" />
+      <datebox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userDataNascita)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userLuogoResidenza)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userCitta)" />
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userNazione)" />
+
+      <!--  <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userCv)" /> -->
+    
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@load(each.user.userEmail)" />
+      
+      <textbox onChange="@command('updateRow',par=each)" onOK="@command('updateRow',par=each)" inplace="true" value="@bind(each.user.userLink)" />
+       <combobox 
+       onChange="@command('updateRowRuolo',par=each)" 
+       onOK="@command('updateRowRuolo',par=each)"
+     	model="@load(vm.ruoli)"
+      	inplace="true" 
+   		width="100%"
+   		selectedItem="@bind(each.user.ruolo)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.ruoloDescrizione)"/>
+        	</template>
+        </combobox>
+        
+       
+   		
+      <div>
+	      <button width="75px" style="color:green;" label="attiva" onClick="@command('attiva',par=each)" visible="@load(not each.user.active)" />
+	      <button width="75px" style="color:red;" label="disattiva" onClick="@command('disattiva',par=each)" visible="@load(each.user.active)" />
+      </div>
+    </row>
+  </template>
+</grid>

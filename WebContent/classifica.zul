@@ -1,0 +1,17 @@
+<?page title="Classifiche" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native">
+	<include src="content/header.zul" />
+	<div>
+	<n:div class="full-content container">
+		<n:div class="row">
+		<n:div class="col-md-6">
+			<include src="/content/opere_classifica_popolare.zul" />
+		</n:div>
+			
+		<n:div class="col-md-6">
+			<include src="/content/opere_classifica_critica.zul" />
+		</n:div>	
+		</n:div>
+	</n:div>
+	</div>
+</zk>

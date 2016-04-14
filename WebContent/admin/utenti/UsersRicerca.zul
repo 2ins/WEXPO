@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+  <style src="css/style.css" />
+  <div class="ricerca-filtro" style="text-align:center;">
+    <div class="tablr" id="userId">
+  
+    
+      <label id="lbl_userNome" value="Nome" />
+      <textbox id="txt_userNome" value="@bind(vm.ricerca.userNome)" />
+     
+      <label id="lbl_userCognome" value="Cognome" />
+      <textbox id="txt_userCognome" value="@bind(vm.ricerca.userCognome)" />
+    
+   
+      <label id="lbl_userCitta" value="Citta" />
+      <textbox id="txt_userCitta" value="@bind(vm.ricerca.userCitta)" />
+      
+       
+      
+      <label id="lbl_userNazione" value="Nazione" />
+      <textbox id="txt_userNazione" value="@bind(vm.ricerca.userNazione)" />
+
+      <label id="lbl_userEmail" value="Email" />
+      <textbox id="txt_userEmail" value="@bind(vm.ricerca.userEmail)" />
+
+	<separator/>
+    
+      <label value="Ruolo" />
+      <combobox 
+     	model="@load(vm.ruoli)"
+      	selectedItem="@bind(vm.ricerca.ruolo)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.ruoloDescrizione)"/>
+        	</template>
+        </combobox>
+       
+       <label  value="Stato" /> 
+        <combobox 
+     	model="@load(vm.stati)"
+      	selectedItem="@bind(vm.ricerca.stato)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.desc)"/>
+        	</template>
+        </combobox>
+      
+        <button label="cerca" onClick="@command('cerca')"/>
+        <button label="salva" onClick="@command('salva')"/>
+        
+        
+    </div>
+  </div>
+  
+
+</zk>

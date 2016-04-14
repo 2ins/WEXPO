@@ -1,0 +1,74 @@
+<zk xmlns:n="native" >
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.CercaOpereVM')">
+		<n:div class="search row">
+			<textbox placeholder="cerca opere" value="@bind(vm.operaNome)" class="col-md-10"/>
+			<button label="cerca" onClick="@command('cerca')" class="col-md-2"/>
+		</n:div>
+		<div children="@load(vm.opere)">
+			<template name="children" >
+				<n:div class="w-item col-md-12">
+					<n:div class="row border-btm">
+						<n:h2 class="w-title col-md-6">
+							<label value="@load(each.operaTitolo)" onClick="@command('apriDettaglioOpera',par=each)"/>
+						</n:h2>
+						<n:div class="w-author col-md-6">
+							<n:div class="margin">
+								<label value="@load(each.userNome)" onClick="@command('apriDettaglioUtente',par=each)" />
+								<label value="@load(each.userCognome)" onClick="@command('apriDettaglioUtente', par=each)" />
+							</n:div>
+							<n:small>
+								www.sitoweb.it
+							</n:small>
+						</n:div>
+						<!-- <n:div class="w-link col-md-2">
+							<label value="@load(each.userLink)" />
+						</n:div> -->
+					</n:div>
+					<n:div class="row">
+						<n:div class="w-thumb_large col-md-6">
+							<image src="@load(vm.getImageLink(each))" onClick="@command('apriDettaglioOpera',par=each)"/>	 	
+						</n:div>
+						<n:div class="w-description col-md-6">
+							<n:h4>Descrizione opera</n:h4>
+							<label value="@load(each.operaDescrizione)" />
+						</n:div>
+					</n:div>
+					<n:div class="row">
+						<n:div class="w-rating popular col-md-6">
+							<n:div class="row">
+								<n:div class="col-md-8">
+									<n:small>voto popolare</n:small>
+									<div children="@load(each.mediaPopImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>
+								</n:div>
+								<n:div class="w-num-users col-md-4">
+									<n:span class="glyphicon glyphicon-user"></n:span>
+									<label value="@load(each.operaRatePopFeeds)" />
+								</n:div>
+							</n:div>
+						</n:div>
+						<n:div class="w-rating critical col-md-6">
+							<n:div class="row">
+								<n:div class="col-md-8">
+									<n:small>voto critico</n:small>
+									<div children="@load(each.mediaCritImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>
+								</n:div>
+								<n:div class="w-num-users col-md-4">
+									<n:span class="glyphicon glyphicon-user"></n:span>
+									<label value="@load(each.operaRateCritFeeds)" />
+								</n:div>
+							</n:div>
+						</n:div>
+					</n:div>
+				</n:div>
+			</template>
+		</div>
+	</div>
+</zk>

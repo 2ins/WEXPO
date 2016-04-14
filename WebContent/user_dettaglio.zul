@@ -1,0 +1,15 @@
+<?page title="Profilo utente" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" >
+<include src="/content/header.zul" />
+	<n:div class="main container">
+		<n:div class="sidebar left col-md-2">
+			<include src="/content/user_view.zul" />
+		</n:div>
+		<n:div class="content col-md-8">
+			<include src="/content/user_opere.zul" />
+		</n:div>
+		<n:div class="sidebar right col-md-2">
+			<include src="/content/user_feedback_emessi.zul" />
+		</n:div>
+	</n:div>
+</zk>

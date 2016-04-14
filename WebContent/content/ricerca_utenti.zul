@@ -1,0 +1,67 @@
+<zk xmlns:n="native" >
+	<div apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('it.wexpo.vm.UsersVm')">
+		<n:div class="search row">
+			<textbox placeholder="cerca utenti" value="@bind(vm.ricerca)" class="col-md-10"/>
+			<button label="cerca" onClick="@command('ricerca')" class="col-md-2"/>
+		</n:div>				
+		<div children="@load(vm.list)">
+			<template name="children" >	
+				<n:div class="w-item results col-md-12">
+					<n:div class="row">
+						
+						<n:div class="w-avatar col-md-2">
+							<image src="@load(vm.getImageLink(each))" onClick="@command('apriDettaglioUtente',par=each)"/>
+						</n:div>
+						
+						<n:div class="col-md-10">	
+							<n:div class="w-artist col-md-12">
+								<n:h3>
+									<label value="@load(each.userNome)" onClick="@command('apriDettaglioUtente',par=each)"/>
+									<label value="@load(each.userCognome)" onClick="@command('apriDettaglioUtente',par=each)"/>
+								</n:h3>
+							</n:div>
+							<n:div class="w-opere col-md-3">
+								<n:span class="glyphicon glyphicon-picture"></n:span>
+								<n:p>Numero opere</n:p>
+								<label value="@load(each.numeroOpere)" />
+							</n:div>
+							<n:div class="w-tag col-md-3">
+								<n:span class="glyphicon glyphicon-tag"></n:span>
+								<n:p>Tag</n:p>
+							</n:div>	
+							<n:div class="w-tag col-md-3">
+								<n:div class="w-label">
+									<n:small>Voto popolare medio</n:small>
+								</n:div>
+								<div children="@load(each.mediaPopImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>	
+								<n:div class="w-label">
+									<n:span class="glyphicon glyphicon-user"></n:span>
+									<label value="@load(each.operaRatePopFeeds)" />
+								</n:div>
+							</n:div>
+							<n:div class="w-tag col-md-3">
+								<n:div class="w-label">
+									<n:small>Voto critica medio</n:small>
+								</n:div>
+									<div children="@load(each.mediaCritImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>
+									
+								<n:div class="w-label">
+									<n:span class="glyphicon glyphicon-user"></n:span>
+									<label value="@load(each.operaRateCritFeeds)" />
+								</n:div>
+							</n:div>	
+						</n:div>
+					</n:div>
+				</n:div>	
+			</template>
+		</div>
+	</div>
+</zk>

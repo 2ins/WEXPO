@@ -1,0 +1,30 @@
+<zk xmlns:n="native" >
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.OpereCritVm')">
+		<n:div class="w-rating-box critical col-md-12">
+			<n:h3 class="row">Classifica Critica</n:h3>
+			<div children="@load(vm.opere)">
+				<template name="children" >			
+					<n:div class="w-rating-item">
+						<include src="/content/opera_mini.zul" />
+						<n:div class="w-rating-vote col-md-12">
+							<n:div class="row">
+								<n:div class="col-md-8">
+									
+									<div children="@load(each.mediaCritImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>	
+								</n:div>
+								<n:div class="w-num-users col-md-4">	
+									<n:span class="glyphicon glyphicon-user"></n:span>
+									<label value="@load(each.operaRateCritFeeds)" />
+								</n:div>
+							</n:div>
+						</n:div>	
+					</n:div>
+				</template>
+			</div>
+		</n:div>
+	</div>
+</zk>

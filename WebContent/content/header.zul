@@ -1,0 +1,58 @@
+<zk xmlns:n="native" >
+	<style src="/css/bootstrap.min.css"/>
+	<style src="/css/my.css"/>
+	<script src="/js/demo.js" defer="true"/>
+	<script src="/js/bootstrap.min.js" defer="true"/>
+	
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.MenuVm')">
+		<n:div class="logo-row">
+			<n:div class="container">
+	           	<n:div class="w-logo col-md-2">
+	           		<image src="/img/logo.png" style="height:100px" onClick="@command('mainpage')"/>
+	           	</n:div>
+	           	<n:div class="w-slogan col-md-8">
+	           		<n:p>L'arte è di tutti</n:p>
+	           		
+	           		<n:span>Wexpo promuove l'arte in modo gratuito a livello internazionale</n:span>
+	           	</n:div>
+	           	<n:div class="col-md-2">
+	           	</n:div>
+           	</n:div>
+        </n:div>
+        <n:nav class="navbar navbar-default col-md-12">
+        	<n:div class="container">
+        		<n:div class="navbar-header">
+        			<n:a href="#">Wexpo</n:a>
+      				<n:button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				        <n:span class="sr-only">Toggle navigation</n:span>
+				        <n:span class="icon-bar"></n:span>
+				        <n:span class="icon-bar"></n:span>
+				        <n:span class="icon-bar"></n:span>
+      				</n:button>
+    			</n:div>
+    			<n:div class="collapse navbar-collapse" id="navbar-collapse-1">
+      				<n:ul class="nav navbar-nav">
+		  				<n:li>
+		  					<a label="ACCEDI" onClick="@command('accedi')" visible="@load(not vm.userLogged)"></a>
+		  				</n:li>
+		  				<n:li>
+		  					<a label="REGISTRATI" onClick="@command('registrati')" visible="@load(not vm.userLogged)"></a>
+		  				</n:li>
+					   	<n:li>
+					   		<a label="RICERCA UTENTI" onClick="@command('cercaUtenti')"></a>
+					   	</n:li>
+					    <n:li>
+					    	<a label="RICERCA OPERE" onClick="@command('cercaOpere')"></a>
+					    </n:li>
+					    <n:li>
+					    	<a label="CLASSIFICA" onClick="@command('apriClassifica')"></a>
+					    </n:li>
+					    <n:li>
+					    	<a label="ESCI" onClick="@command('esci')" visible="@load(vm.userLogged)"></a>
+					    </n:li>
+  					</n:ul>
+  				</n:div>
+  			</n:div>
+  		</n:nav>
+	</div>
+</zk>

@@ -1,0 +1,28 @@
+<zk xmlns:n="native">
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.UserViewVm')">
+    	<n:div class="w-user-box">
+			<n:div class="w-avatar">
+				<image src="@load(vm.imageLink)" />
+		    </n:div>
+		    <n:ul>
+		    	<n:li style="text-align:center;">
+		    		<label value="@load(vm.user.userNome)" /> 
+		    		<label value="@load(vm.user.userCognome)"/>
+		    	</n:li>
+		    	<n:li class="border-btm">
+		    		<n:span class="glyphicon glyphicon-calendar"></n:span>         
+		    		<label value="@load(vm.user.userDataNascita)"/>
+		        </n:li>
+		        <n:li class="border-btm">       
+		    		<n:span class="glyphicon glyphicon-map-marker"></n:span>
+		    		<label value="@load(vm.user.userLuogoResidenza)"/>
+		    		<label value="@load(vm.user.userCitta)"/>
+		    		<label value="@load(vm.user.userNazione)"/>
+		        </n:li>
+		        <n:li class="border-btm">    
+					<n:span class="glyphicon glyphicon-envelope"></n:span><label value="@load(vm.user.userEmail)" />
+				</n:li>
+		    </n:ul>           
+		</n:div>				
+    </div>
+</zk>

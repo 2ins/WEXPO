@@ -1,0 +1,84 @@
+<zk xmlns:n="native">
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.RegisterVm')">
+		<n:div class="w-forms">
+	   		<n:div class="choose-log row">	
+				<radiogroup id="age" selectedItem="@bind(vm.ruoloSelected)" model="@load(vm.ruoli)">
+					<template name="model">
+						<radio label="@load(each.ruoloDescrizione)" value="@load(each.ruoloId)"></radio>
+					</template>
+				</radiogroup>
+			</n:div>
+			<n:div class="w-nome row">
+				<n:label class="col-md-4">
+				   	Nome*
+				</n:label>
+				<textbox value="@bind(vm.user.userNome)" onChange="@command('refresh')"  onOk="@command('refresh')"  class="col-md-8" />
+			</n:div>
+			<n:div class="w-cognome row">
+				<n:label class="col-md-4">
+				    Cognome*
+				</n:label>
+				<textbox value="@bind(vm.user.userCognome)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>
+			<n:div class="w-dataNascita row">
+				<n:label class="col-md-4">
+				    Data di nascita
+				</n:label>
+				<datebox value="@bind(vm.user.userDataNascita)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>
+			<n:div class="w-luogoResidenza row">
+				<n:label class="col-md-4">
+				    Luogo di residenza
+				</n:label>
+				<textbox value="@bind(vm.user.userLuogoResidenza)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>  	
+			<n:div class="w-citta row">
+				<n:label class="col-md-4">
+				    Citta
+				</n:label>
+				<textbox value="@bind(vm.user.userCitta)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />  
+			</n:div>	
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					Nazione
+				</n:label>
+				<textbox value="@bind(vm.user.userNazione)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>    
+			<n:div class="w-uploadFoto row">
+				<n:label class="col-md-4">
+				    Foto
+				</n:label>
+				<button label="Upload" upload="true,native" onUpload="@command('onUploadFoto',upEvent=event)" class="col-md-8">  </button>
+			</n:div>   
+			<!--	
+			<n:div class="w-curricula row">
+				<n:label class="col-md-4">
+				    Curriculum Vitae
+				</n:label>
+				<button label="Upload" upload="true" onUpload="@command('onUploadCv',upEvent=event)" class="col-md-8" >  </button>
+			</n:div> 
+			-->    
+			<n:div class="w-email row">
+				<n:label class="col-md-4">
+					Email*
+				</n:label>
+				<textbox onChange="@command('refresh')"   onOk="@command('refresh')" constraint="/.+@.+\.[a-z]+/: Inserisci un indirizzo email corretto" value="@bind(vm.user.userEmail)" class="col-md-8"/>
+			</n:div>     
+			<n:div class="w-password row">
+				<n:label class="col-md-4">
+					Password*
+				</n:label>
+				<textbox onChange="@command('refresh')"  onOk="@command('refresh')" type="password" value="@bind(vm.user.userPassword)" class="col-md-8" />
+			</n:div>
+			<n:div class="w-repassword row">
+				<n:label class="col-md-4">
+					Ripeti Password*
+				</n:label>
+				<textbox onChange="@command('refresh')"  onOk="@command('refresh')" type="password" value="@bind(vm.re_password)" class="col-md-8" />
+			</n:div>	
+			<button label="salva" onClick="@command('salva')" disabled="@load(vm.salvaDisabled)"/>
+		</n:div>
+		
+		    
+	</div>    
+</zk>

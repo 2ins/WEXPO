@@ -1,0 +1,13 @@
+<zk xmlns:n="native" >
+
+	
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.auth.vm.AuthVm')">
+		<label value="@load(vm.status)"/>
+		<separator/>
+		<separator/>
+		<separator/>
+		<label value="premi qui per tornare alla index del sito" onClick="@command('redireziona')" />
+		
+	</div>
+
+</zk>

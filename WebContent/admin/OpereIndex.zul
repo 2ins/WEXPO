@@ -1,0 +1,22 @@
+<zk>
+<style src="css/style.css"/>
+
+<borderlayout  apply="org.zkoss.bind.BindComposer" 
+	viewModel="@id('vm') @init('it.wexpo.admin.vm.OpereVm')" >
+	
+	<north splittable="true" collapsible="true">
+	<div>
+		
+		  <button label="cerca" onClick="@command('cerca')"/>
+  		  <button label="salva" onClick="@command('salva')"/>
+		
+	</div>
+	</north>
+	
+	<center autoscroll="true">
+		<include src="opere/OpereGriglia.zul"/>
+	</center>
+
+</borderlayout>
+
+</zk>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+  <style src="css/style.css" />
+  <div class="ricerca-filtro">
+    <div class="tablr" id="operaId">
+      
+     
+      <label id="lbl_operaTitolo" value="Opera Titolo" />
+      <textbox id="txt_operaTitolo" value="@bind(vm.ricerca.operaTitolo)" />
+     
+      <label id="lbl_operaDescrizione" value="Opera Descrizione" />
+      <textbox id="txt_operaDescrizione" value="@bind(vm.ricerca.operaDescrizione)" />
+    
+      <label id="lbl_operaIdUser" value="Opera Id User" />
+      <textbox id="txt_operaIdUser" value="@bind(vm.ricerca.operaIdUser)" />
+     
+     
+      <label id="lbl_operaInsert" value="Opera Insert" />
+      <datebox id="dte_operaInsert" value="@bind(vm.ricerca.operaInsert)" />
+    
+      <label id="lbl_operaUpdate" value="Opera Update" />
+      <datebox id="dte_operaUpdate" value="@bind(vm.ricerca.operaUpdate)" />
+      
+      <label value="Stato" />
+       <combobox 
+     	model="@load(vm.stati)"
+      	selectedItem="@bind(vm.ricerca.stato)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.desc)"/>
+        	</template>
+        </combobox>
+    </div>
+  </div>
+  
+  <button label="cerca" onClick="@command('cerca')"/>
+  <button label="salva" onClick="@command('salva')"/>
+  
+</zk>

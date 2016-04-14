@@ -1,0 +1,63 @@
+<zk xmlns:n="native">
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.FeedbackEmessiUserVm')">
+		<n:div class="w-user-feed-box">
+			<!-- dati globali sui feed -->
+			
+			
+			
+			
+			<n:h3>Feedback emessi</n:h3>
+			<n:div class="w-user-feed">
+		        <label value="@load(vm.totFeedbackEmessi)"></label>
+		    </n:div>
+		    <!-- 
+		    <n:h3>Media feedback emessi</n:h3>
+		    <n:div class="w-user-media-feed">
+	        	
+	        	<n:span class="glyphicon glyphicon-star"></n:span>
+	        	<n:span class="glyphicon glyphicon-star"></n:span>
+	        	<n:span class="glyphicon glyphicon-star"></n:span>
+        	</n:div>
+        	 -->
+        	
+        	
+        	
+        	
+        	
+        	<!-- tutti i feed -->
+        	<div children="@load(vm.feedbacks)">
+				<template name="children" >
+					<n:div class="w-user-feed-item">
+						<n:ul>
+							<n:li class="border-btm">
+								<label value="@load(each.feedbackDescrizione)"/>
+							</n:li>
+							<n:li class="border-btm">
+								<n:span class="glyphicon glyphicon-star"></n:span>
+								voto: <label value="@load(each.feedbackVoto)"/>
+								
+							</n:li>
+							<n:li class="border-btm w-avatar">
+								<div class="w-avatar-img" onClick="@command('apriProfiloUtente',par=each)">
+									<image src="@load(vm.getImageUser(each))" onClick="@command('apriProfiloUtente',par=each)"/>
+								</div>
+								<label value="@load(each.userNome)" onClick="@command('apriProfiloUtente',par=each)"/>
+								<label value="@load(each.userCognome)" onClick="@command('apriProfiloUtente',par=each)"/>
+							</n:li>
+							<n:li class="border-btm">
+								<n:span class="glyphicon glyphicon-picture"></n:span>   
+								<label value="@load(each.operaTitolo)"/>
+							</n:li>
+							<n:li class="border-btm">
+								<image src="@load(vm.getImageOpera(each))" onClick="@command('apriOpera',par=each)"/>
+							</n:li>
+							<n:li class="border-btm">
+								<label value="@load(each.operaDescrizione)"/>
+							</n:li>
+						</n:ul>
+					</n:div>
+				</template>
+			</div>
+		</n:div>
+	</div>
+</zk>

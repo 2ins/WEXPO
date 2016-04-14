@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+  <style src="css/style.css" />
+  <div class="ricerca-filtro">
+    
+       <!-- 
+      <label id="lbl_feedbackVoto" value="Feedback Voto" />
+      <textbox id="txt_feedbackVoto" value="@bind(vm.ricerca.feedbackVoto)" />
+    
+      <label id="lbl_feedbackDescrizione" value="Feedback Descrizione" />
+      <textbox id="txt_feedbackDescrizione" value="@bind(vm.ricerca.feedbackDescrizione)" />
+    
+    
+      <label id="lbl_feedbackDate" value="Feedback Date" />
+      <datebox id="dte_feedbackDate" value="@bind(vm.ricerca.feedbackDate)" />
+      
+      
+      <label id="lbl_userFeedbackId" value="User Feedback Id" />
+      <textbox id="txt_userFeedbackId" value="@bind(vm.ricerca.userFeedbackId)" />
+      
+      <label id="lbl_userFeedbackIdRuolo" value="User Feedback Id Ruolo" />
+      <textbox id="txt_userFeedbackIdRuolo" value="@bind(vm.ricerca.userFeedbackIdRuolo)" />
+    
+    
+     <separator/> 
+      <label id="lbl_operaActive" value="Opera Active" />
+      <textbox id="txt_operaActive" value="@bind(vm.ricerca.operaActive)" />
+     
+      <label id="lbl_feedbackIdOpera" value="Id Opera" />
+      <textbox id="txt_feedbackIdOpera" value="@bind(vm.ricerca.feedbackIdOpera)" />
+      
+    
+      <label id="lbl_userOperaId" value="User Opera Id" />
+      <textbox id="txt_userOperaId" value="@bind(vm.ricerca.userOperaId)" />
+    
+      <label id="lbl_userOperaIdRuolo" value="User Opera Id Ruolo" />
+      <textbox id="txt_userOperaIdRuolo" value="@bind(vm.ricerca.userOperaIdRuolo)" />
+    -->
+      
+  </div>
+ 
+</zk>

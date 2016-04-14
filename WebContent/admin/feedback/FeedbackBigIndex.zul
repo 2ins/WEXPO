@@ -1,0 +1,17 @@
+<zk>
+<style src="css/style.css"/>
+
+<borderlayout  apply="org.zkoss.bind.BindComposer" 
+	viewModel="@id('vm') @init('it.wexpo.admin.vm.FeedbackVm')" >
+	
+	<north splittable="true" collapsible="true">
+		
+	</north>
+	
+	<center autoscroll="true">
+		<include src="FeedbackBigGriglia.zul"/>
+	</center>
+
+</borderlayout>
+
+</zk>

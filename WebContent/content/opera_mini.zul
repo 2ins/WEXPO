@@ -1,0 +1,21 @@
+<zk xmlns:n="native" >
+	<n:div class="w-thumb_small col-md-4">
+		<image src="@load(vm.getImageLink(each))" onClick="@command('apriOpera',param=each)"/>
+	</n:div>
+	<n:div class="w-rating-title col-md-8">
+		<n:h4>
+			<label value="@load(each.operaTitolo)" onClick="@command('apriOpera',param=each)"/>
+		</n:h4>
+	</n:div>
+	<n:div class="w-rating-author col-md-12">
+		<n:p>
+			<label value="@load(each.userNome)" onClick="@command('apriUtente',param=each)" /> 
+			<label value="@load(each.userCognome)" onClick="@command('apriUtente',param=each)"/> 
+		</n:p>
+	</n:div>
+	<n:div class="w-rating-descrip col-md-12">
+		<n:p>
+			<label value="@load(vm.getTrunk(each))" /> 
+		</n:p>
+	</n:div>
+</zk>

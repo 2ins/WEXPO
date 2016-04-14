@@ -1,0 +1,60 @@
+<zk xmlns:n="native" >
+<grid id="grd_FeedbackBig" model="@bind(vm.list)">
+ 	<auxhead >
+       	<auxheader colspan="7" label="FEEDBACK" style="text-align:center;"/>
+        <auxheader colspan="6" label="OPERA" style="text-align:center;"/>
+     </auxhead>
+  	<auxhead style="text-align:center;">
+       	<auxheader colspan="4" label="FEEDBACK" style="text-align:center;"/>
+        <auxheader colspan="3" label="USER" style="text-align:center;"/>
+     	<auxheader colspan="3" label="OPERA" style="text-align:center;"/>
+     	<auxheader colspan="3" label="USER" style="text-align:center;"/>
+     </auxhead>
+     
+     
+ <columns>  
+    <column label="Id" style="color:green;" />
+    <column label="Voto" style="color:green;"> <textbox id="txt_feedbackVoto" value="@bind(vm.ricerca.feedbackVoto)" width="30px;"/></column>
+    <column label="Descr" style="color:green;" width="200px"> <textbox id="txt_feedbackDescrizione" value="@bind(vm.ricerca.feedbackDescrizione)" /></column>
+    <column style="color:green;" width="150px">   <datebox id="dte_feedbackDate" value="@bind(vm.ricerca.feedbackDate)" /></column>
+      
+    
+    <column label="Id" style="color:#0000FF;">  <textbox id="txt_userFeedbackId" value="@bind(vm.ricerca.userFeedbackId)" width="30px;" /> </column> 
+    <column label="Nome" style="color:#0000FF;" >  </column>
+    <column label="Cognome" style="color:#0000FF;" >  </column>
+      
+    
+    <column label="Id" style="color:red;"> <textbox id="txt_feedbackIdOpera" value="@bind(vm.ricerca.feedbackIdOpera)" width="30px"/> </column>
+  	<column label="Descr" style="color:red"/>
+    <column label="Active" style="color:red;"> <textbox id="txt_operaActive" value="@bind(vm.ricerca.operaActive)" width="30px" /></column>
+
+    <column label="Id" style="color:orange;" >  <textbox id="txt_userOperaId" value="@bind(vm.ricerca.userOperaId)" width="30px"/></column> 
+    <column label="Nome" style="color:orange;"/>
+    <column label="Cognome" style="color:orange;"/>
+   
+  </columns>
+  <template name="model">
+    <row style="@load(each.style)">
+      <label value="@bind(each.feedbackId)" />
+      <label value="@bind(each.feedbackVoto)" />
+      <label value="@bind(each.feedbackDescrizione)" />
+  
+      <label value="@bind(each.feedbackDate)" />
+      
+      <label value="@bind(each.userFeedbackId)" />
+      <label value="@bind(each.userFeedbackNome)" />
+      <label value="@bind(each.userFeedbackCognome)" />
+      
+      <label value="@bind(each.operaId)" />
+      <label value="@bind(each.operaDescrizione)" />
+	  <label value="@bind(each.operaActive)" />
+      
+      
+      <label value="@bind(each.userOperaId)" /> 
+      <label value="@bind(each.userOperaNome)" />
+      <label value="@bind(each.userOperaCognome)" />
+
+    </row>
+  </template>
+</grid>
+</zk>

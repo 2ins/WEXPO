@@ -1,0 +1,16 @@
+<?page title="Home wExpo" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" >
+	<include src="/content/header.zul" />
+	<n:div class="main container">
+		<n:div class="content col-md-8 col-md-push-2">
+			<include src="/content/opere_tutte.zul" />
+		</n:div>
+		<n:div class="sidebar left col-md-2 col-md-pull-8">
+			<include src="/content/sidebar_menu.zul" />
+			<include src="/content/opere_classifica_popolare.zul" />
+		</n:div>
+		<n:div class="sidebar right col-md-2">
+			<include src="/content/opere_classifica_critica.zul" />
+		</n:div>
+	</n:div>
+</zk>
