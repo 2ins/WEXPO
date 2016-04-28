@@ -18,14 +18,14 @@ import it.wexpo.utils.DbUtils;
 
 public class BusinessAutenticazione {
 
-	public static void inserisciAuthInviaMail(UsersBean user, Connection conn) throws SQLException{
+	public static void inserisciAuthInviaMail(UsersBean user, Connection conn) throws Exception{
 		String tipo = "INIT";
 		String token = inserisciAutenticazione(user, conn, tipo);
 		MailProcessor.eseguiBenvenuto(user,token);
 	
 	}
 
-	public static void inserisciAuthInviaMailPasswordDimenticata(UsersBean user, Connection conn) throws SQLException{
+	public static void inserisciAuthInviaMailPasswordDimenticata(UsersBean user, Connection conn) throws Exception{
 		String tipo = "R_PSW";
 		String token = inserisciAutenticazione(user, conn, tipo);
 		MailProcessor.eseguiPasswordDimenticata(user,token);

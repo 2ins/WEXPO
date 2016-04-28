@@ -1,7 +1,10 @@
 package it.wexpo.mail;
 
+import javax.naming.NamingException;
+
 import it.wexpo.beans.FeedbackBigBean;
 import it.wexpo.beans.UsersBean;
+import it.wexpo.utils.EnvironmentUtils;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
@@ -34,26 +37,27 @@ public class MailGenerator {
 	}
 	
 	
-	public String getBenvenuto(UsersBean user, String token){
+	public String getBenvenuto(UsersBean user, String token) throws Exception{
 		
 		StringTemplate tmp = getTemplate("conferma_mail");
 		
 		tmp.setAttribute("nome", user.getUserNome());
 		tmp.setAttribute("cognome", user.getUserCognome());
-		String link = "http://localhost:8080/WEXPO_MANHATTA/auth/auth.zul?token="+token;
+		String url = EnvironmentUtils.getServerUrl();
+		String link = url+"/auth/auth.zul?token="+token;
 		tmp.setAttribute("link", link);
 		
 		return tmp.toString();
 		
 	}
 	
-public String getPasswDimenticata(UsersBean user, String token){
+public String getPasswDimenticata(UsersBean user, String token) throws Exception{
 		
 		StringTemplate tmp = getTemplate("conferma_mail");
-		
+		String url = EnvironmentUtils.getServerUrl();
 		tmp.setAttribute("nome", user.getUserNome());
 		tmp.setAttribute("cognome", user.getUserCognome());
-		String link = "http://localhost:8080/WEXPO_MANHATTA/auth/resetPassword.zul?token="+token;
+		String link = url+"/auth/resetPassword.zul?token="+token;
 		tmp.setAttribute("link", link);
 		
 		return tmp.toString();

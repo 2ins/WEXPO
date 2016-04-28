@@ -4,11 +4,13 @@ import it.wexpo.beans.UsersBean;
 import it.wexpo.business.BusinessAuth;
 import it.wexpo.business.BusinessLogin;
 import it.wexpo.utils.ApplicationUtils;
+import it.wexpo.utils.EnvironmentUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.zkoss.bind.annotation.Command;
@@ -46,7 +48,14 @@ public class AuthVm {
 	
 	@Command("redireziona")
 	public void redireziona(){
-		Executions.sendRedirect("index.zul");
+		try {
+			String url = EnvironmentUtils.getServerUrl();
+			Executions.sendRedirect(url);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public String getStatus() {

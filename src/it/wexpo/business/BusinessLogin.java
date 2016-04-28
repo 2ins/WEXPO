@@ -17,7 +17,7 @@ public class BusinessLogin {
 	
 	
 	
-public static Long salvaUtenteAutenticaInviaMailTransational(UsersBean user,ImmaginiBean imgBean) throws SQLException{
+public static Long salvaUtenteAutenticaInviaMailTransational(UsersBean user,ImmaginiBean imgBean) throws Exception{
 		
 		Connection conn = DbUtils.getMySqlConn();
 		
@@ -46,7 +46,7 @@ public static Long salvaUtenteAutenticaInviaMailTransational(UsersBean user,Imma
 
 
 
-public static void resetPasswordAutenticaInviaMailTransational(String mail) throws SQLException{
+public static void resetPasswordAutenticaInviaMailTransational(String mail) throws Exception{
 	
 	Connection conn = DbUtils.getMySqlConn();
 	

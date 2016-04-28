@@ -1,0 +1,23 @@
+<zk xmlns:n="native">
+<style src="/css/federico.css"/>
+	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.TagVm')">
+    	
+    	
+    	<label value="TAGS" />
+    	
+		<div children="@load(vm.operaTagList)">
+			<template name="children" >
+				<n:div class="rcorners1">
+					<label value="@load(each.tagDesc)"  />
+					<label style="color:white;" value="x" onClick="@command('eliminaTag',par=each)"  visible="@load(vm.evaluateTagEnabled())"/>
+				</n:div>	
+			</template>
+		</div>				
+						
+	<div visible="@load(vm.evaluateTagEnabled())">
+		<separator/><separator/><separator/><separator/><separator/><separator/>
+    	<textbox value="@bind(vm.bean.tagDesc)" />
+		<button label="salva" onClick="@command('salva')" />	
+		</div>
+    </div>    
+</zk>

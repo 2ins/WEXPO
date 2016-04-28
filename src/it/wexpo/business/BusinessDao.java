@@ -130,8 +130,10 @@ public static Long salvaOpera(OpereBean opera, ImmaginiBean imgBean, UsersBean u
 		opera.setOperaIdImmagine(idImg);
 		opera.setOperaIdUser(user.getUserId());
 			Long x = dao.insertGenKey(opera, conn);
+			
+		conn.commit();
 		return x;
-	
+		
 	}catch(Exception e){
 		e.printStackTrace();
 		throw e;

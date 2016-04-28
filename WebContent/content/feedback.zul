@@ -30,6 +30,9 @@
 						</n:div>
 						<label value="@load(vm.opera.operaDescrizione)"/>
 					</n:div>
+					
+					<include src="content/tag.zul"  />
+					
 				</n:div>
 				<div visible="@load(vm.feedbackEnabled)">
 					<n:div class="row border-top">

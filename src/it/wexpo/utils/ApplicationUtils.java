@@ -12,6 +12,9 @@ import it.wexpo.business.BusinessDao;
 
 public class ApplicationUtils {
 	
+	
+	
+	
 	public static UsersBean getLoggedUser() {
 		SimpleSession s = (SimpleSession) Executions.getCurrent().getDesktop().getSession();
 		return (UsersBean)s.getAttribute("USER");

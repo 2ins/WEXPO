@@ -1,11 +1,16 @@
 package it.wexpo.mail;
 
+import javax.naming.NamingException;
+
+import it.wexpo.utils.EnvironmentUtils;
+
 import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
 
 public class SendGridMailer {
-	public static void sendMail(String emailFrom, String emailto, String emailSubject, String htmlBody) {
+	public static void sendMail(String emailFrom, String emailto, String emailSubject, String htmlBody) throws NamingException {
 		  
+		String sendKey = EnvironmentUtils.getSendGridKey();
 	    SendGrid sendgrid = new SendGrid("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");
 
 	    SendGrid.Email email = new SendGrid.Email();

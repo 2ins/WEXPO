@@ -97,8 +97,8 @@ public class RegisterVm {
 			
 			
 			
-		} catch (SQLException e) {
-			Messagebox.show("errore durante inserimento");
+		} catch (Exception e) {
+			Messagebox.show("errore");
 		}
 	}
 	 
