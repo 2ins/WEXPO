@@ -68,6 +68,7 @@ public class FeedbackBusiness {
 				opera.setOperaRateCritFeeds(feeds);
 			}
 			
+			conn.commit();
 			dao.update(opera, operaSelect, conn);
 			
 			

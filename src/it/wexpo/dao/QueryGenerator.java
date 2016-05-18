@@ -47,6 +47,39 @@ public class QueryGenerator {
 		return tmp.toString();
 		
 	}
+	
+public String getOperaSql(int type, String ricerca){
+		StringTemplate tmp;
+		if (type==0){
+			 tmp = getTemplate("opereAll");
+			 tmp.setAttribute("ricerca", ricerca);
+		}else{
+			 tmp = getTemplate("OpereTipoFeed");
+			 tmp.setAttribute("tipo", type);
+			 tmp.setAttribute("ricerca", ricerca);
+		}
+		
+		return tmp.toString();
+		
+	}
+
+public String getOperaUser(Long userId){
+	StringTemplate tmp;
+	
+	tmp = getTemplate("opereByUser");
+	tmp.setAttribute("userId", userId);
+	
+	return tmp.toString();	
+}
+
+public String getFeedbackEmessi(Long userId){
+	StringTemplate tmp;
+	
+	tmp = getTemplate("feedbackEmessiByUser");
+	tmp.setAttribute("userId", userId);
+	
+	return tmp.toString();	
+}
 
 
 }

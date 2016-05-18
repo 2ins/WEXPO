@@ -4,6 +4,7 @@ import it.wexpo.beans.FeedbackOperaViewBean;
 import it.wexpo.beans.UserViewBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.dao.DettaglioUtenteDao;
+import it.wexpo.dao.QueryGenerator;
 import it.wexpo.dao.SqlQuery;
 import it.wexpo.dao.UsersDao;
 import it.wexpo.utils.DbUtils;
@@ -18,8 +19,7 @@ public class BusinessUtente {
 		Connection conn = DbUtils.getMySqlConn();
 		ArrayList<FeedbackOperaViewBean> list = null;
 		try{
-			String sql = SqlQuery.FEED_OPERA_OPERAUSER_BY_USER;
-			
+			String sql = QueryGenerator.getInstance().getFeedbackEmessi(user.getUserId());
 			list = DettaglioUtenteDao.executeQweryMany(sql, conn, user);
 			return list;
 		}catch(Exception e){

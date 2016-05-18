@@ -25,7 +25,6 @@ public class SendGridMailer {
 			System.out.println(response.getMessage());
 		} catch (SendGridException e) {
 			System.out.println("errori");
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	  }
