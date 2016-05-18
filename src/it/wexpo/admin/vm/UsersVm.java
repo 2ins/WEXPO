@@ -19,6 +19,8 @@ import it.wexpo.business.BusinessAdmin;
 import it.wexpo.utils.RuoliSingleton;
 import it.wexpo.utils.WexpoMediaUtils;
 
+//info test
+
 public class UsersVm {
 
 	private UsersBean ricerca = new UsersBean();
