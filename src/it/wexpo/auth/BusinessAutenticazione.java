@@ -73,7 +73,7 @@ public class BusinessAutenticazione {
 				throw new Exception("Utente non piu presente nel database");	
 			}
 			UsersBean userLogged = listUser.get(0);
-			userLogged.setUserActive(1);
+			userLogged.setUserActive(0);
 			usersDao.update(userLogged, userSelect, conn);
 			
 			

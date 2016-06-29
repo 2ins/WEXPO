@@ -17,7 +17,6 @@ public class OpereAllVm extends OpereGenericVm{
 	
 	private ArrayList<OperaViewBean> opere = new ArrayList<OperaViewBean>();
 	
-	
 	@Init
 	@NotifyChange("*")
 	public void init()  throws IOException {
@@ -33,9 +32,9 @@ public class OpereAllVm extends OpereGenericVm{
 	public ArrayList<OperaViewBean> getOpere() {
 		return opere;
 	}
+	
 	public void setOpere(ArrayList<OperaViewBean> opere) {
 		this.opere = opere;
 	}
-
 	
 }

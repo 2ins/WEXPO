@@ -13,14 +13,18 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Messagebox;
 
-public class OpereGenericVm {
+public class OpereGenericVm extends GeneralVm{
 	public String getImageLink(OperaViewBean op){
 		return WexpoMediaUtils.getImage(op.getImmagineHash());
 	}
 	
 
 	public String getTrunk(OperaViewBean op){
-		return WexpoMediaUtils.getTrunk(op.getOperaDescrizione());
+		if (isLuanguageIta()){
+			return WexpoMediaUtils.getTrunk(op.getOperaDescrizione());
+		}else{
+			return WexpoMediaUtils.getTrunk(op.getOperaDescrizioneEng());
+		}
 	}
 	
 	
@@ -30,6 +34,21 @@ public class OpereGenericVm {
 		try {
 			ApplicationUtils.setOperaSelected(op);
 			Executions.sendRedirect("/feedback.zul");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+	}
+	
+	@Command("openLink")
+	public void openLink(@BindingParam("par") String op)  throws IOException {
+		try {
+			System.out.println("site: "+op);
+			if (!op.toLowerCase().contains("http://")&&!op.toLowerCase().contains("https://")){
+				op = "http://"+op;
+			}
+			Executions.getCurrent().sendRedirect(op, "_blank");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

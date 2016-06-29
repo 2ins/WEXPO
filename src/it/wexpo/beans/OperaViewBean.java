@@ -5,6 +5,7 @@ import it.wexpo.utils.WexpoMediaUtils;
 import java.lang.String;
 import java.lang.Long;
 import java.lang.Integer;
+import java.util.ArrayList;
 import java.util.Date;
 
 import automation.bean.AutomationBean;
@@ -27,9 +28,19 @@ public class OperaViewBean extends ViewBean{
 	private Long immagineId;
 	private String immagineHash;
 	private Integer feedbackVoto;
+	
+	private String website;
+	
+	private String facebookLink;
+	private String youtubeLink;
+	private String googleLink;
+	private String twitterLink;
 
+	private ArrayList<String> tags;
 	
 	
+	private String operaTitoloEng;
+	private String operaDescrizioneEng;
 	
 
 	public String getTimeUpdate() {
@@ -134,6 +145,54 @@ public class OperaViewBean extends ViewBean{
 	}
 	public void setOperaActive(Integer operaActive) {
 		this.operaActive = operaActive;
+	}
+	public String getWebsite() {
+		return website;
+	}
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
+	public String getYoutubeLink() {
+		return youtubeLink;
+	}
+	public void setYoutubeLink(String youtubeLink) {
+		this.youtubeLink = youtubeLink;
+	}
+	public String getGoogleLink() {
+		return googleLink;
+	}
+	public void setGoogleLink(String googleLink) {
+		this.googleLink = googleLink;
+	}
+	public String getTwitterLink() {
+		return twitterLink;
+	}
+	public void setTwitterLink(String twitterLink) {
+		this.twitterLink = twitterLink;
+	}
+	public ArrayList<String> getTags() {
+		return tags;
+	}
+	public void setTags(ArrayList<String> tags) {
+		this.tags = tags;
+	}
+	public String getOperaTitoloEng() {
+		return operaTitoloEng;
+	}
+	public void setOperaTitoloEng(String operaTitoloEng) {
+		this.operaTitoloEng = operaTitoloEng;
+	}
+	public String getOperaDescrizioneEng() {
+		return operaDescrizioneEng;
+	}
+	public void setOperaDescrizioneEng(String operaDescrizioneEng) {
+		this.operaDescrizioneEng = operaDescrizioneEng;
 	}
 	
 	

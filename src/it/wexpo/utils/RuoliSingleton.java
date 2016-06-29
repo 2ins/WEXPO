@@ -39,6 +39,27 @@ public class RuoliSingleton {
 		return stati;
 	}
 	
+	public static ArrayList<ActiveBean> getStatiDomainAdminUsers() {
+		ArrayList statiAdmin = new ArrayList<ActiveBean>();
+		ActiveBean a1 = new ActiveBean();
+		a1.setId(0);
+		a1.setDesc("Disattivato");
+		
+		ActiveBean a2 = new ActiveBean();
+		a2.setId(1);
+		a2.setDesc("Attivato");
+		
+		ActiveBean a0 = new ActiveBean();
+		a0.setId(-1);
+		a0.setDesc("Non Confermato Mail");
+		
+		statiAdmin.add(a0);
+		statiAdmin.add(a1);
+		statiAdmin.add(a2);
+		
+		return statiAdmin;
+	}
+	
 	public static RuoliSingleton getInstance() throws Exception{
 		if (istanza == null) {
 			istanza = new RuoliSingleton();

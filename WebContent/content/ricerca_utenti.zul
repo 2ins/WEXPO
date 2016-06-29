@@ -1,7 +1,12 @@
 <zk xmlns:n="native" >
 	<div apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('it.wexpo.vm.UsersVm')">
 		<n:div class="search row">
-			<textbox placeholder="cerca utenti" value="@bind(vm.ricerca)" class="col-md-10"/>
+			<textbox placeholder="${labels.nome}" value="@bind(vm.user.userNome)"  />
+			<textbox placeholder="${labels.cognome}" value="@bind(vm.user.userCognome)"  />
+			<textbox placeholder="${labels.nazione}" value="@bind(vm.user.userNazione)"  />
+			<textbox placeholder="${labels.citta}" value="@bind(vm.user.userCitta)" />
+			
+			
 			<button label="cerca" onClick="@command('ricerca')" class="col-md-2"/>
 		</n:div>				
 		<div children="@load(vm.list)">
@@ -16,22 +21,24 @@
 						<n:div class="col-md-10">	
 							<n:div class="w-artist col-md-12">
 								<n:h3>
-									<label value="@load(each.userNome)" onClick="@command('apriDettaglioUtente',par=each)"/>
-									<label value="@load(each.userCognome)" onClick="@command('apriDettaglioUtente',par=each)"/>
+									${labels.nome}: <label value="@load(each.userNome)" onClick="@command('apriDettaglioUtente',par=each)"/>
+									${labels.cognome}: <label value="@load(each.userCognome)" onClick="@command('apriDettaglioUtente',par=each)"/>
+									${labels.nazione}: <label value="@load(each.userNazione)" onClick="@command('apriDettaglioUtente',par=each)"/>
+									${labels.citta}: <label value="@load(each.userCitta)" onClick="@command('apriDettaglioUtente',par=each)"/>
 								</n:h3>
 							</n:div>
 							<n:div class="w-opere col-md-3">
 								<n:span class="glyphicon glyphicon-picture"></n:span>
-								<n:p>Numero opere</n:p>
+								<n:p>${labels.numeroopere}</n:p>
 								<label value="@load(each.numeroOpere)" />
 							</n:div>
 							<n:div class="w-tag col-md-3">
 								<n:span class="glyphicon glyphicon-tag"></n:span>
-								<n:p>Tag</n:p>
+								<n:p>${labels.tag}</n:p>
 							</n:div>	
 							<n:div class="w-tag col-md-3">
 								<n:div class="w-label">
-									<n:small>Voto popolare medio</n:small>
+									<n:small>${labels.votopopolaremedio}</n:small>
 								</n:div>
 								<div children="@load(each.mediaPopImg)">
 										<template name="children" >
@@ -45,7 +52,7 @@
 							</n:div>
 							<n:div class="w-tag col-md-3">
 								<n:div class="w-label">
-									<n:small>Voto critica medio</n:small>
+									<n:small>${labels.votocriticamedio}</n:small>
 								</n:div>
 									<div children="@load(each.mediaCritImg)">
 										<template name="children" >

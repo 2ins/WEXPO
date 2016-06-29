@@ -1,6 +1,8 @@
 package it.wexpo.business;
 
+import it.wexpo.autodao.ImmaginiAutoDao;
 import it.wexpo.beans.FeedbackOperaViewBean;
+import it.wexpo.beans.ImmaginiBean;
 import it.wexpo.beans.UserViewBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.dao.DettaglioUtenteDao;
@@ -30,9 +32,19 @@ public class BusinessUtente {
 		}
 	}
 	
-	public static ArrayList<UserViewBean> ricercaView(String str) throws SQLException{
+	public static ArrayList<UserViewBean> ricercaView(UsersBean user) throws SQLException{
 		Connection conn =  DbUtils.getMySqlConn();
 		try {
+			
+			
+			String sql = QueryGenerator.getInstance().getUtenti(user);
+			
+			System.out.println("#########");
+			System.out.println(sql);
+			System.out.println("#########");
+			
+			/*
+				
 			String condition = "(users.user_nome like '%"+str+"%' or users.user_cognome like '%"+str+"%')";
 					
 			
@@ -45,6 +57,7 @@ public class BusinessUtente {
 				+ "left join immagini i on a.user_foto = i.immagine_id "
 				+ "left join opere on opere.`opera_id_user` = a.user_id "
 				+ "group by a.user_id ";
+				*/
 			return UsersDao.executeQweryMany(sql, conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,6 +76,27 @@ public class BusinessUtente {
 					+ "left join immagini i on a.user_foto = i.immagine_id";
 			
 			ArrayList<UserViewBean> list = UsersDao.executeQweryMany(sql, conn);
+			
+			if (list.size()==0) return null;
+				return list.get(0);
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}finally{
+			conn.close();
+		}
+		
+	}
+	
+	public static ImmaginiBean findFoto(long idFoto) throws SQLException{
+		Connection conn =  DbUtils.getMySqlConn();
+		try {
+			
+			ImmaginiBean bean = new ImmaginiBean();
+			bean.setImmagineId(idFoto);
+			ImmaginiAutoDao dao = new ImmaginiAutoDao();
+			ArrayList<ImmaginiBean> list = dao.select(bean, conn);
 			
 			if (list.size()==0) return null;
 				return list.get(0);

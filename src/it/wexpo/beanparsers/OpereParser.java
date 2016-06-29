@@ -19,6 +19,10 @@ public class OpereParser implements BeanParser<OpereBean>{
 		bean.setOperaInsert(res.getDate("opera_insert"));
 		bean.setOperaUpdate(res.getDate("opera_update"));
 		bean.setOperaActive(res.getInt("opera_active"));
+		
+		bean.setOperaTitoloEng(res.getString("opera_titolo_eng"));
+		bean.setOperaDescrizioneEng(res.getString("opera_descrizione_eng"));
+		
 		return bean;
 	}
 }

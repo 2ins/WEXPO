@@ -1,15 +1,33 @@
 <zk xmlns:n="native" >
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.CercaOpereVM')">
 		<n:div class="search row">
-			<textbox placeholder="cerca opere" value="@bind(vm.operaNome)" class="col-md-10"/>
+			<textbox placeholder="${labels.nome}" value="@bind(vm.ricerca.utenteNome)" />
+			<textbox placeholder="${labels.cognome}" value="@bind(vm.ricerca.utenteCognome)" />
+			<textbox placeholder="${labels.citta}" value="@bind(vm.ricerca.citta)" />
+			<textbox placeholder="${labels.nazione}" value="@bind(vm.ricerca.nazione)" />
+			
+			<textbox visible="@load(vm.luanguageIta)"  placeholder="${labels.operatitolo}" value="@bind(vm.ricerca.operaNome)" />
+			<textbox visible="@load(vm.luanguageIta)" placeholder="${labels.operadescrizione}" value="@bind(vm.ricerca.operaDescrizione)" />
+			
+			<textbox visible="@load(not vm.luanguageIta)" placeholder="${labels.operatitolo}" value="@bind(vm.ricerca.operaNomeEng)" />
+			<textbox visible="@load(not vm.luanguageIta)" placeholder="${labels.operadescrizione}" value="@bind(vm.ricerca.operaDescrizioneEng)" />
+			
+			
+			<textbox placeholder="${labels.tag}" value="@bind(vm.ricerca.tag)" />
+			
 			<button label="cerca" onClick="@command('cerca')" class="col-md-2"/>
+		
+		
+		
+		
 		</n:div>
 		<div children="@load(vm.opere)">
 			<template name="children" >
 				<n:div class="w-item col-md-12">
 					<n:div class="row border-btm">
 						<n:h2 class="w-title col-md-6">
-							<label value="@load(each.operaTitolo)" onClick="@command('apriDettaglioOpera',par=each)"/>
+							<label visible="@load(vm.luanguageIta)" value="@load(each.operaTitolo)" onClick="@command('apriDettaglioOpera',par=each)"/>
+							<label visible="@load(not vm.luanguageIta)" value="@load(each.operaTitoloEng)" onClick="@command('apriDettaglioOpera',par=each)"/>
 						</n:h2>
 						<n:div class="w-author col-md-6">
 							<n:div class="margin">
@@ -17,7 +35,7 @@
 								<label value="@load(each.userCognome)" onClick="@command('apriDettaglioUtente', par=each)" />
 							</n:div>
 							<n:small>
-								www.sitoweb.it
+								${labels.website}
 							</n:small>
 						</n:div>
 						<!-- <n:div class="w-link col-md-2">
@@ -29,15 +47,28 @@
 							<image src="@load(vm.getImageLink(each))" onClick="@command('apriDettaglioOpera',par=each)"/>	 	
 						</n:div>
 						<n:div class="w-description col-md-6">
-							<n:h4>Descrizione opera</n:h4>
-							<label value="@load(each.operaDescrizione)" />
+							<n:h4>${labels.descrizioneopera}</n:h4>
+							<label  visible="@load(vm.luanguageIta)" value="@load(each.operaDescrizione)" />
+							<label  visible="@load(not vm.luanguageIta)" value="@load(each.operaDescrizioneEng)" />
+							
+							<separator/><separator/>
+							<n:h4>tags</n:h4>
+							
+							<div children="@load(each.tags)">
+								<template name="children" var="tag">
+									<n:div class="rcorners1">
+										<label value="@load(tag)"  />
+									</n:div>	
+								</template>
+							</div>	
+							
 						</n:div>
 					</n:div>
 					<n:div class="row">
 						<n:div class="w-rating popular col-md-6">
 							<n:div class="row">
 								<n:div class="col-md-8">
-									<n:small>voto popolare</n:small>
+									<n:small>${labels.votopopolare}</n:small>
 									<div children="@load(each.mediaPopImg)">
 										<template name="children" >
 											<n:span class="glyphicon glyphicon-star"></n:span>
@@ -53,7 +84,7 @@
 						<n:div class="w-rating critical col-md-6">
 							<n:div class="row">
 								<n:div class="col-md-8">
-									<n:small>voto critico</n:small>
+									<n:small>${labels.votocritico}</n:small>
 									<div children="@load(each.mediaCritImg)">
 										<template name="children" >
 											<n:span class="glyphicon glyphicon-star"></n:span>

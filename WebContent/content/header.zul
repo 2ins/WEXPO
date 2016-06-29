@@ -11,11 +11,20 @@
 	           		<image src="/img/logo.png" style="height:100px" onClick="@command('mainpage')"/>
 	           	</n:div>
 	           	<n:div class="w-slogan col-md-8">
-	           		<n:p>L'arte è di tutti</n:p>
+	           		<n:p>	${labels.wexpotitle}</n:p>
 	           		
-	           		<n:span>Wexpo promuove l'arte in modo gratuito a livello internazionale</n:span>
+	           		<n:span>${labels.wexpodescription}</n:span>
 	           	</n:div>
 	           	<n:div class="col-md-2">
+	           	${labels.language}
+	           	<image src="@load(vm.languageToSelect.path)" onClick="linguaCbk.setVisible(true)"/>
+	           	
+	           	<combobox  width="50px" visible="false" open="true" id="linguaCbk"
+                    model="@load(vm.languages)" selectedItem="@bind(vm.languageToSelect)" onSelect="@command('cambiaLingua',par=self)">
+                    <template name="model">
+                        <comboitem label="@load(each.id)" image="@load(each.path)" />
+                    </template>
+                </combobox>
 	           	</n:div>
            	</n:div>
         </n:div>
@@ -33,22 +42,31 @@
     			<n:div class="collapse navbar-collapse" id="navbar-collapse-1">
       				<n:ul class="nav navbar-nav">
 		  				<n:li>
-		  					<a label="ACCEDI" onClick="@command('accedi')" visible="@load(not vm.userLogged)"></a>
+		  					<a label="${labels.accedi}" onClick="@command('accedi')" visible="@load(not vm.userLogged)"></a>
 		  				</n:li>
 		  				<n:li>
-		  					<a label="REGISTRATI" onClick="@command('registrati')" visible="@load(not vm.userLogged)"></a>
+		  					<a label="${labels.registrati}" onClick="@command('registrati')" visible="@load(not vm.userLogged)"></a>
 		  				</n:li>
 					   	<n:li>
-					   		<a label="RICERCA UTENTI" onClick="@command('cercaUtenti')"></a>
+					   		<a label="${labels.ricercautenti}" onClick="@command('cercaUtenti')"></a>
 					   	</n:li>
 					    <n:li>
-					    	<a label="RICERCA OPERE" onClick="@command('cercaOpere')"></a>
+					    	<a label="${labels.ricercaopere}" onClick="@command('cercaOpere')"></a>
 					    </n:li>
 					    <n:li>
-					    	<a label="CLASSIFICA" onClick="@command('apriClassifica')"></a>
+					    	<a label="${labels.classifica}" onClick="@command('apriClassifica')"></a>
 					    </n:li>
 					    <n:li>
-					    	<a label="ESCI" onClick="@command('esci')" visible="@load(vm.userLogged)"></a>
+					    	<a label="${labels.mioprofilopubblico}" onClick="@command('apriUserPage')" visible="@load(vm.userLogged)"></a>
+					    </n:li>
+					    <n:li>
+					    	<a label="${labels.nuovaopera}" onClick="@command('nuovaOpera')" visible="@load(vm.userLogged)"></a>
+					    </n:li>
+					    <n:li>
+					    	<a label="${labels.aggiornaanagrafica}" onClick="@command('updateAnagrafica')" visible="@load(vm.userLogged)"></a>
+					    </n:li>
+					    <n:li>
+					    	<a label="${labels.esci}" onClick="@command('esci')" visible="@load(vm.userLogged)"></a>
 					    </n:li>
   					</n:ul>
   				</n:div>

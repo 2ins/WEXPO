@@ -35,7 +35,8 @@ public class OpereAutoDao extends GenericDao<OpereBean>{
 		DBmap.put( "opera_update",bean.getOperaUpdate());
 		DBmap.put( "opera_active",bean.getOperaActive());
 		
-	
+		DBmap.put( "opera_titolo_eng",bean.getOperaTitoloEng());
+		DBmap.put( "opera_descrizione_eng",bean.getOperaDescrizioneEng());
 	}
 
 	@Override

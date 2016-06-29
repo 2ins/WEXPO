@@ -72,6 +72,10 @@ public class FeedbackEmessiUserVm extends GeneralVm{
 	public void apriOpera(@BindingParam("par") FeedbackOperaViewBean f)  throws IOException {
 		OperaViewBean op = new OperaViewBean();
 		op.setOperaId(f.getOperaId());
+		op.setUserNome(f.getUserNome());
+		op.setUserCognome(f.getUserCognome());
+		op.setImmagineHash(f.getOperaHashFoto());
+		
 		ApplicationUtils.setOperaSelected(op);
 		Executions.sendRedirect("/feedback.zul");
 	}

@@ -23,6 +23,10 @@ public class OpereBean extends AutomationBean{
 	private Integer operaActive;
 	private ActiveBean stato;
 	
+	
+	private String operaTitoloEng;
+	private String operaDescrizioneEng;
+	
 
 	public Long getOperaId()  {
 		return this.operaId;
@@ -117,6 +121,18 @@ public class OpereBean extends AutomationBean{
 		}else{
 			this.operaActive = null;
 		}
+	}
+	public String getOperaTitoloEng() {
+		return operaTitoloEng;
+	}
+	public void setOperaTitoloEng(String operaTitoloEng) {
+		this.operaTitoloEng = operaTitoloEng;
+	}
+	public String getOperaDescrizioneEng() {
+		return operaDescrizioneEng;
+	}
+	public void setOperaDescrizioneEng(String operaDescrizioneEng) {
+		this.operaDescrizioneEng = operaDescrizioneEng;
 	}
 	
 	

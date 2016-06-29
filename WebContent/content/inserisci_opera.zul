@@ -1,20 +1,44 @@
 <zk xmlns:n="native">
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.OperaVm')">
     	<n:div class="w-forms">
+    	
+    	
+    	
 			<n:div class="w-titolo row">
-				<n:label class="col-md-4">Nome Opera*</n:label>
+				<n:label class="col-md-4">${labels.nomeopera}*</n:label>
 				<textbox value="@bind(vm.opera.operaTitolo)" onChange="@command('refresh')" class="col-md-8"/>
+				
 			</n:div>
+			
+			
+			<n:div class="w-titolo row">
+				<n:label class="col-md-4">${labels.nomeoperaingl}*</n:label>
+				<textbox value="@bind(vm.opera.operaTitoloEng)" onChange="@command('refresh')" class="col-md-8"/>
+			</n:div>
+			
 			<n:div class="w-descrizione row">
-				<n:label class="col-md-4">Descrizione Opera*</n:label>
+				<n:label class="col-md-4">${labels.descrizione}*</n:label>
 				<textbox value="@bind(vm.opera.operaDescrizione)" onChange="@command('refresh')" class="col-md-8"/>
 			</n:div>
-			<n:div class="w-thumb row">
-				<n:label class="col-md-4">Foto*</n:label>
-				<button label="Upload" upload="true,native" onUpload="@command('onUploadFoto',upEvent=event)"  >  </button>
+			
+			<n:div class="w-descrizione row">
+				<n:label class="col-md-4">${labels.descrizionenglese}*</n:label>
+				<textbox value="@bind(vm.opera.operaDescrizioneEng)" onChange="@command('refresh')" class="col-md-8"/>
 			</n:div>
-			<image src="@load(vm.getImage())" />
-			<button label="salva" onClick="@command('salva')" disabled="@load(vm.salvaDisabled)"/>
+			
+			<n:div class="w-thumb row">
+				<n:label class="col-md-4">${labels.foto}*</n:label>
+			 
+				<button width="100px" label="Upload" upload="true,native" onUpload="@command('onUploadFoto',upEvent=event)"  >  </button>
+				
+			</n:div>
+			
+			<n:div class="w-thumb row">
+				<n:label class="col-md-4"/>
+			 	<button width="100px" label="Salva" onClick="@command('salva')" disabled="@load(vm.salvaDisabled)"/>
+			</n:div>
+			<image src="@load(vm.getImage())" width="400px"/>
+			
 			
         </n:div>
     </div>    

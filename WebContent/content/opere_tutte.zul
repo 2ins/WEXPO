@@ -5,7 +5,8 @@
 				<n:div class="w-item col-md-12">
 					<n:div class="row border-btm">
 						<n:h1 class="w-title col-md-6">
-							<label value="@load(each.operaTitolo)" onClick="@command('apriOpera',param=each)"/>
+							<label visible="@load(vm.luanguageIta)" value="@load(each.operaTitolo)" onClick="@command('apriOpera',param=each)"/>
+							<label visible="@load(not vm.luanguageIta)" value="@load(each.operaTitoloEng)" onClick="@command('apriOpera',param=each)"/>
 							<n:small>
 								<label value="@load(each.timeUpdate)" />
 							</n:small>
@@ -16,19 +17,29 @@
 								<label value="@load(each.userCognome)" onClick="@command('apriUtente',param=each)"/>
 							</n:div>
 							<n:small>
-								www.sitoweb.it
+								<div>
+									<label value="@load(each.website)" onClick="@command('openLink', par=each.website)" visible="@load(not empty each.website)"/>
+								</div>
 							</n:small>
 						</n:div>
 						<n:div class="w-link col-md-2">
-							<label value="@load(each.userLink)" />
-							<n:div class="w-ico-link" style="border-radius:150px; background:#000;">
-							</n:div>
-							<n:div class="w-ico-link" style="border-radius:150px; background:#000;">
-							</n:div>
-							<n:div class="w-ico-link" style="border-radius:150px; background:#000;">
-							</n:div>
-							<n:div class="w-ico-link" style="border-radius:150px; background:#000;">
-							</n:div>
+							
+							
+							<div class="w-ico-link" style="border-radius:150px; background:red;" visible="@load(not empty each.youtubeLink)">
+								<label value="y" onClick="@command('openLink', par=each.youtubeLink)"/>
+							</div>
+							
+							<div class="w-ico-link" style="border-radius:150px; background:grey;" visible="@load(not empty each.twitterLink)">
+								<label value="t" onClick="@command('openLink', par=each.twitterLink)"/>
+							</div>
+							
+							<div class="w-ico-link" style="border-radius:150px; background:green;" visible="@load(not empty each.facebookLink)">
+								<label value="f" onClick="@command('openLink', par=each.facebookLink)"/>
+							</div>
+							
+							<div class="w-ico-link" style="border-radius:150px; background:yellow;" visible="@load(not empty each.googleLink)">
+								<label value="g" onClick="@command('openLink', par=each.googleLink)"/>
+							</div>
 						</n:div>
 					</n:div>
 					<n:div class="row">
@@ -36,15 +47,16 @@
 							 <image src="@load(vm.getImageLink(each))" onClick="@command('apriOpera',param=each)" />
 						</n:div>
 						<n:div class="w-description col-md-6">
-							<n:h4>Descrizione opera</n:h4>
-							<label value="@load(each.operaDescrizione)" />
+							<n:h4>${labels.descrizioneopera}</n:h4>
+							<label visible="@load(vm.luanguageIta)" value="@load(each.operaDescrizione)" />
+							<label visible="@load(not vm.luanguageIta)" value="@load(each.operaDescrizioneEng)" />
 						</n:div>
 					</n:div>
 					<n:div class="row">
 						<n:div class="w-rating popular col-md-6">
 							<n:div class="row">
 								<n:div class="col-md-8">
-									<n:small>voto popolare</n:small>
+									<n:small>${labels.votopopolare}</n:small>
 									<div children="@load(each.mediaPopImg)">
 										<template name="children" >
 											<n:span class="glyphicon glyphicon-star"></n:span>
@@ -61,7 +73,7 @@
 						<n:div class="w-rating critical col-md-6">
 							<n:div class="row">
 								<n:div class="col-md-8">
-									<n:small>voto critico</n:small>
+									<n:small>${labels.votocritico}</n:small>
 									<div children="@load(each.mediaCritImg)">
 										<template name="children" >
 											<n:span class="glyphicon glyphicon-star"></n:span>

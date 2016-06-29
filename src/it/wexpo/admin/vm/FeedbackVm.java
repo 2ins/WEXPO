@@ -11,6 +11,7 @@ import it.wexpo.beans.FeedbackBigBean;
 import it.wexpo.beans.OpereBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.business.BusinessAdmin;
+import it.wexpo.utils.ApplicationUtils;
 import it.wexpo.utils.RuoliSingleton;
 import it.wexpo.utils.WexpoMediaUtils;
 import it.zone.vm.AbstractCrudVM;
@@ -88,7 +89,13 @@ public class FeedbackVm  {
 	
 	
 	
-	
+	public boolean isIta(){
+		String env = ApplicationUtils.getLanguageEnv();
+		if (env.equalsIgnoreCase("it")){ 
+			return true;
+		}
+		return false;
+	}
 
 	
 	

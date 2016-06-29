@@ -1,11 +1,11 @@
 <zk xmlns:n="native" >
 <grid id="grd_FeedbackBig" model="@bind(vm.list)">
  	<auxhead >
-       	<auxheader colspan="7" label="FEEDBACK" style="text-align:center;"/>
+       	<auxheader colspan="6" label="VOTO" style="text-align:center;"/>
         <auxheader colspan="6" label="OPERA" style="text-align:center;"/>
      </auxhead>
   	<auxhead style="text-align:center;">
-       	<auxheader colspan="4" label="FEEDBACK" style="text-align:center;"/>
+       	<auxheader colspan="3" label="VOTO" style="text-align:center;"/>
         <auxheader colspan="3" label="USER" style="text-align:center;"/>
      	<auxheader colspan="3" label="OPERA" style="text-align:center;"/>
      	<auxheader colspan="3" label="USER" style="text-align:center;"/>
@@ -15,7 +15,9 @@
  <columns>  
     <column label="Id" style="color:green;" />
     <column label="Voto" style="color:green;"> <textbox id="txt_feedbackVoto" value="@bind(vm.ricerca.feedbackVoto)" width="30px;"/></column>
+   <!--  
     <column label="Descr" style="color:green;" width="200px"> <textbox id="txt_feedbackDescrizione" value="@bind(vm.ricerca.feedbackDescrizione)" /></column>
+    -->
     <column style="color:green;" width="150px">   <datebox id="dte_feedbackDate" value="@bind(vm.ricerca.feedbackDate)" /></column>
       
     
@@ -37,7 +39,7 @@
     <row style="@load(each.style)">
       <label value="@bind(each.feedbackId)" />
       <label value="@bind(each.feedbackVoto)" />
-      <label value="@bind(each.feedbackDescrizione)" />
+     <!--  <label value="@bind(each.feedbackDescrizione)" />--> 
   
       <label value="@bind(each.feedbackDate)" />
       

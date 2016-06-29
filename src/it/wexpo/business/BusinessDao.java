@@ -126,10 +126,11 @@ public static Long salvaOpera(OpereBean opera, ImmaginiBean imgBean, UsersBean u
 		OpereAutoDao dao = new OpereAutoDao();
 		ImmaginiAutoDao imgDao = new ImmaginiAutoDao();
 		Long idImg = imgDao.insertGenKey(imgBean, conn);
+		System.out.println("id img :"+idImg);
 		opera.setOperaInsert(new Date());
 		opera.setOperaIdImmagine(idImg);
 		opera.setOperaIdUser(user.getUserId());
-			Long x = dao.insertGenKey(opera, conn);
+		Long x = dao.insertGenKey(opera, conn);
 			
 		conn.commit();
 		return x;

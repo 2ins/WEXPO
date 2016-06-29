@@ -3,20 +3,20 @@
 	   	<n:div class="w-forms">
 			<n:div class="w-email row">
 			 	<n:label class="col-md-4">
-			        email
+			        ${labels.email}
 			    </n:label>
 			    <textbox class="col-md-8"  constraint="/.+@.+\.[a-z]+/: Inserisci un indirizzo email corretto" value="@bind(vm.login)" />
 			</n:div>
 			<n:div class="w-password row">
 				<n:label class="col-md-4">    
-			        password
+			        ${labels.password}
 			 	</n:label>               
 			    <textbox type="password" value="@bind(vm.password)" class="col-md-8"/>
 			</n:div>
 			<button label="login" onClick="@command('login')" />
 			<separator/>
 			<separator/>
-			<label value="password dimenticata?" onClick="@command('passwordForget')" />
+			<label value="${labels.passworddimenticata}" onClick="@command('passwordForget')" />
 		</n:div>
 	</div>
 </zk>

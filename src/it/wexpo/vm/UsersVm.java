@@ -26,7 +26,7 @@ import org.zkoss.zk.ui.Executions;
 public class UsersVm {
 	
 	private ArrayList<UserViewBean> list = new ArrayList<UserViewBean>();
-	private String ricerca;
+	private UsersBean user = new UsersBean();
 	
 	@Init
 	@Command
@@ -60,7 +60,7 @@ public class UsersVm {
 		
 		try {
 			
-			list = BusinessUtente.ricercaView(ricerca);
+			list = BusinessUtente.ricercaView(user);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,16 +76,16 @@ public class UsersVm {
 	public void setList(ArrayList<UserViewBean> list) {
 		this.list = list;
 	}
-
-
-	public String getRicerca() {
-		return ricerca;
+	
+	
+	public UsersBean getUser() {
+		return user;
+	}
+	
+	public void setUser(UsersBean user) {
+		this.user = user;
 	}
 
-
-	public void setRicerca(String ricerca) {
-		this.ricerca = ricerca;
-	}
 
 
 

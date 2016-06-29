@@ -35,7 +35,8 @@ public class FeedVm extends GeneralVm{
 	private OpereBean opera;
 	private OperaViewBean operaView;
 	private FeedbackBean feed;
-	private ArrayList<FeedbackViewBean> feedbacks;
+	private ArrayList<FeedbackViewBean> feedbacksPop;
+	private ArrayList<FeedbackViewBean> feedbacksCrit;
 	private boolean feedbackEnabled = false;
 	
 	
@@ -46,6 +47,7 @@ public class FeedVm extends GeneralVm{
 		
 		user = ApplicationUtils.getLoggedUser();
 		operaView = ApplicationUtils.getOperaSelected();
+		System.out.println("DATAOPERA: "+operaView.getOperaDateInsert());
 		immagine.setImmagineHash(operaView.getImmagineHash());
 		try {
 			opera = FeedbackBusiness.caricaOpera(operaView.getOperaId());
@@ -55,7 +57,8 @@ public class FeedVm extends GeneralVm{
 			if (feed==null){
 				feed=new FeedbackBean();
 			}
-			feedbacks = FeedbackBusiness.caricaFeedbackViewList(operaView.getOperaId());
+			feedbacksPop = FeedbackBusiness.caricaFeedbackViewList(operaView.getOperaId(),"POP");
+			feedbacksCrit = FeedbackBusiness.caricaFeedbackViewList(operaView.getOperaId(),"CRIT");
 			feedbackEnabled = evaluateFeedbackEnabled();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -71,6 +74,8 @@ public class FeedVm extends GeneralVm{
 		} 
 		return false;
 	}
+	
+	
 	
 	public String getImage(){
 		if(immagine.getImmagineHash()!=null){
@@ -137,6 +142,15 @@ public class FeedVm extends GeneralVm{
 		Executions.sendRedirect("/user_dettaglio.zul");
 	}
 	
+	
+	public boolean isLuanguageIta(){
+		String language = ApplicationUtils.getLanguageEnv();
+		if (language.equalsIgnoreCase("it")){
+			return true;
+		}
+		return false;
+	}
+	
 
 	public UsersBean getUser() {
 		return user;
@@ -170,12 +184,22 @@ public class FeedVm extends GeneralVm{
 		this.feed = feed;
 	}
 
-	public ArrayList<FeedbackViewBean> getFeedbacks() {
-		return feedbacks;
+
+
+	public ArrayList<FeedbackViewBean> getFeedbacksPop() {
+		return feedbacksPop;
 	}
 
-	public void setFeedbacks(ArrayList<FeedbackViewBean> feedbacks) {
-		this.feedbacks = feedbacks;
+	public void setFeedbacksPop(ArrayList<FeedbackViewBean> feedbacksPop) {
+		this.feedbacksPop = feedbacksPop;
+	}
+
+	public ArrayList<FeedbackViewBean> getFeedbacksCrit() {
+		return feedbacksCrit;
+	}
+
+	public void setFeedbacksCrit(ArrayList<FeedbackViewBean> feedbacksCrit) {
+		this.feedbacksCrit = feedbacksCrit;
 	}
 
 	public OperaViewBean getOperaView() {
@@ -194,6 +218,9 @@ public class FeedVm extends GeneralVm{
 		this.feedbackEnabled = feedbackEnabled;
 	}
 	  
+	
+	
+	
 	
 	
 }

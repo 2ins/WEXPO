@@ -1,7 +1,7 @@
 <zk xmlns:n="native" >
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.OpereCritVm')">
 		<n:div class="w-rating-box critical col-md-12">
-			<n:h3 class="row">Classifica Critica</n:h3>
+			<n:h3 class="row">${labels.classificacritica}</n:h3>
 			<div children="@load(vm.opere)">
 				<template name="children" >			
 					<n:div class="w-rating-item">

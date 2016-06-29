@@ -8,4 +8,12 @@ public class GeneralVm {
 		return (ApplicationUtils.getLoggedUser()!=null);
 	}
 	
+	public boolean isLuanguageIta(){
+		String language = ApplicationUtils.getLanguageEnv();
+		if (language.equalsIgnoreCase("it")){
+			return true;
+		}
+		return false;
+	}
+	
 }

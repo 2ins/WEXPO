@@ -1,6 +1,8 @@
 package it.wexpo.dao;
 
 import it.wexpo.beans.FeedbackBigBean;
+import it.wexpo.beans.RicercaOperaBean;
+import it.wexpo.beans.UsersBean;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
@@ -54,7 +56,7 @@ public String getOperaSql(int type, String ricerca){
 			 tmp = getTemplate("opereAll");
 			 tmp.setAttribute("ricerca", ricerca);
 		}else{
-			 tmp = getTemplate("OpereTipoFeed");
+			 tmp = getTemplate("opereTipoFeed");
 			 tmp.setAttribute("tipo", type);
 			 tmp.setAttribute("ricerca", ricerca);
 		}
@@ -62,6 +64,28 @@ public String getOperaSql(int type, String ricerca){
 		return tmp.toString();
 		
 	}
+
+public String getOperaRicercaSql(RicercaOperaBean bean){
+	 
+	 StringTemplate tmp;
+	
+	 tmp = getTemplate("ricercaOpere");
+	 
+	 tmp.setAttribute("nome", bean.getUtenteNome());
+	 tmp.setAttribute("cognome", bean.getUtenteCognome());
+	 tmp.setAttribute("tag", bean.getTag());
+	 tmp.setAttribute("citta", bean.getCitta());
+	 tmp.setAttribute("nazione", bean.getNazione());
+	 
+	 tmp.setAttribute("operaNome", bean.getOperaNome());
+	 tmp.setAttribute("operaDescrizione", bean.getOperaDescrizione());
+	 
+	 tmp.setAttribute("operaNomeEng", bean.getOperaNomeEng());
+	 tmp.setAttribute("operaDescrizioneEng", bean.getOperaDescrizioneEng());
+	
+	return tmp.toString();
+	
+}
 
 public String getOperaUser(Long userId){
 	StringTemplate tmp;
@@ -81,5 +105,40 @@ public String getFeedbackEmessi(Long userId){
 	return tmp.toString();	
 }
 
+public String getUtenti(UsersBean user){
+	StringTemplate tmp;
+	
+	tmp = getTemplate("cercaUtenti");
+	
+	tmp.setAttribute("nome", getNullValueisEmptyString(user.getUserNome()));
+	tmp.setAttribute("cognome", getNullValueisEmptyString(user.getUserCognome()));
+	tmp.setAttribute("citta", getNullValueisEmptyString(user.getUserCitta()));
+	tmp.setAttribute("nazione", getNullValueisEmptyString(user.getUserNazione()));
+	
+	return tmp.toString();	
+}
 
+	public String getFeedbackCritOpera(Long operaId){
+		StringTemplate tmp;
+		tmp = getTemplate("feedbackCritOpera");
+		tmp.setAttribute("opera_id", operaId);
+		return tmp.toString();	
+	}
+
+	public String getFeedbackPopOpera(Long operaId){
+		StringTemplate tmp;
+		tmp = getTemplate("feedbackPopOpera");
+		tmp.setAttribute("opera_id", operaId);
+		return tmp.toString();	
+	}
+	
+	
+	public String getNullValueisEmptyString(String str){
+		if (str == null) 
+			return null;
+		else if(str.trim().equalsIgnoreCase(""))
+			return null;
+		else return str;
+		
+	}
 }

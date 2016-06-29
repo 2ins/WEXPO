@@ -1,19 +1,30 @@
 <zk xmlns:n="native">
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.FeedVm')">
+	
+		
+	 
+			
+	
+	
+	
+	
+	
+	
     	<n:div class="content col-md-8 col-md-push-2">
 			<n:div class="w-item feedback col-md-12">
 				<n:div class="row border-btm">
 					<n:div class="col-md-8">
 						<n:div class="feedback-label">
-							<n:small>Nome Opera</n:small>
+							<n:small>${labels.nomeopera}</n:small>
 						</n:div>
 						<n:h1 class="w-title">
-							<label value="@load(vm.opera.operaTitolo)" />
+							<label visible="@load(vm.luanguageIta)" value="@load(vm.opera.operaTitolo)" />
+							<label visible="@load(not vm.luanguageIta)" value="@load(vm.opera.operaTitoloEng)" />
 						</n:h1>
 					</n:div>
 					<n:div class="col-md-4">
 						<n:div class="feedback-label">
-							<n:small>Utente</n:small>
+							<n:small>	${labels.utente}</n:small>
 						</n:div>
 						<label value="@load(vm.operaView.userNome)" onClick="@command('apriProfiloUtenteOpera')"/>
 			            <label value="@load(vm.operaView.userCognome)" onClick="@command('apriProfiloUtenteOpera')"/>
@@ -26,9 +37,11 @@
 					</n:div>
 					<n:div class="col-md-12">
 						<n:div class="feedback-label">
-							<n:small>Descrizione Opera</n:small>
+							<n:small>${labels.descrizioneopera}</n:small>
 						</n:div>
-						<label value="@load(vm.opera.operaDescrizione)"/>
+						<label visible="@load(vm.luanguageIta)" value="@load(vm.opera.operaDescrizione)"/>
+						<label visible="@load(not vm.luanguageIta)" value="@load(vm.opera.operaDescrizioneEng)"/>
+						
 					</n:div>
 					
 					<include src="content/tag.zul"  />
@@ -37,17 +50,19 @@
 				<div visible="@load(vm.feedbackEnabled)">
 					<n:div class="row border-top">
 						<n:div class="col-md-8">
+						<!--  
 							<n:div class="feedback-label">
-						    	<n:small>Commento</n:small>
+						    	<n:small>${labels.commento}</n:small>
 						    </n:div>
 						    <textbox value="@bind(vm.feed.feedbackDescrizione)" disabled="@load(not empty vm.feed.feedbackId)" />
+							-->
 							<button label="salva" onClick="@command('emettiFeed')" visible="@load(empty vm.feed.feedbackId)"/>				
 						</n:div>
 						<n:div class="col-md-4">
 							<n:div class="feedback-label">
-						    	Vota opera
+						    	${labels.votaopera}
 						    </n:div>
-							<radiogroup visible="@load(empty vm.feed.feedbackId)">
+							<radiogroup visible="@load(empty vm.feed.feedbackId)" >
 								<radio value="1" label="1" onCheck="@command('valorizzaFeed',param=self.value)"/>
 								<radio value="2" label="2" onCheck="@command('valorizzaFeed',param=self.value)"/>
 								<radio value="3" label="3" onCheck="@command('valorizzaFeed',param=self.value)"/>
@@ -59,23 +74,29 @@
 								<radio value="9" label="9" onCheck="@command('valorizzaFeed',param=self.value)"/>
 								<radio value="10" label="10" onCheck="@command('valorizzaFeed',param=self.value)"/>
 							</radiogroup>
-							<div visible="@load(not empty vm.feed.feedbackId)">
-								<label value="voto :"/>
-								<label value="@load(vm.feed.feedbackVoto)"/>		
-							</div>
+							<!--  
+								<div visible="@load(not empty vm.feed.feedbackId)">
+									<label value="voto :"/>
+									<label value="@load(vm.feed.feedbackVoto)"/>		
+								</div>
+							-->
 						</n:div>	
 					</n:div>
 				</div>
 			</n:div>
 		</n:div>
-    	
-    	<n:div class="sidebar left col-md-2 col-md-pull-8">
-		</n:div>
 		
-		<n:div class="sidebar right col-md-2">
-			<n:div class="w-feed-box col-md-12">
-			<n:h3 class="row">feedback</n:h3>					
-        	<div children="@load(vm.feedbacks)">
+		
+		
+		
+		
+    
+    
+    	<n:div class="sidebar left col-md-2 col-md-pull-8">
+		
+		<n:div class="w-feed-box col-md-12">
+			<n:h3 class="row">${labels.feedbackpop}</n:h3>					
+        	<div children="@load(vm.feedbacksPop)">
 				<template name="children" >
 					<n:div>
 						<n:div class="row">
@@ -96,9 +117,11 @@
 										</template>
 									</div>	
 							</n:div>
+							<!--  
 							<n:div class="col-md-12">
 								<label value="@load(each.feedbackDescrizione)"/>
 							</n:div>
+							-->
 						</n:div>
 						<n:div class="col-md-12">
 							<image src="@load(vm.getImageRate(each))"/>
@@ -108,5 +131,53 @@
 			</div>
 			</n:div>
 		</n:div>
+	
+    
+    
+    
+    
+		
+		<n:div class="sidebar right col-md-2">
+			<n:div class="w-feed-box col-md-12">
+			<n:h3 class="row">${labels.feedbackcrit}</n:h3>					
+        	<div children="@load(vm.feedbacksCrit)">
+				<template name="children" >
+					<n:div>
+						<n:div class="row">
+							<n:div class="w-avatar col-md-4">
+								<image src="@load(vm.getImageUser(each))" onClick="@command('apriProfiloUtente',param=each)"/>
+							</n:div>
+							
+							<n:div class="col-md-8">
+								<label value="@load(each.userNome)" onClick="@command('apriProfiloUtente',param=each)"/>
+								<label value="@load(each.userCognome)" onClick="@command('apriProfiloUtente',param=each)"/>
+							</n:div>
+						</n:div>
+						<n:div class="row">
+							<n:div class="col-md-12">
+								<div children="@load(each.starsImg)">
+										<template name="children" >
+											<n:span class="glyphicon glyphicon-star"></n:span>
+										</template>
+									</div>	
+							</n:div>
+						
+						</n:div>
+						<n:div class="col-md-12">
+							<image src="@load(vm.getImageRate(each))"/>
+						</n:div>
+					</n:div>
+				</template>
+			</div>
+			</n:div>
+		</n:div>
+		
+		
+		
+		
+		
+		
+		
+		
     </div>    
 </zk>

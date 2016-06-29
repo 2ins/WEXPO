@@ -34,6 +34,7 @@ public class OperaVm {
 	@Init
 	@NotifyChange("*")
 	public void init(){
+		ApplicationUtils.checkUpLoggedUser();
 		immagine = new ImmaginiBean();
 		user = ApplicationUtils.getLoggedUser();
 		opera = new OpereBean();
@@ -68,13 +69,19 @@ public class OperaVm {
 	}
 
 	private void refreshButtonSalvaDisabled() {
-		if (opera.getOperaDescrizione()!=null&&!opera.getOperaDescrizione().trim().equals("")&&
-				opera.getOperaTitolo()!=null&&!opera.getOperaTitolo().trim().equals("")&&
+		if (verifyField(opera.getOperaDescrizione())&&
+				verifyField(opera.getOperaDescrizioneEng())&&
+				verifyField(opera.getOperaTitolo())&&
+				verifyField(opera.getOperaTitoloEng())&&
 				immagine.getImmagineHash()!=null){
 			salvaDisabled=false;
 		}else{
 			salvaDisabled=true;
 		}
+	}
+
+	private boolean verifyField(String str) {
+		return str!=null&&!str.trim().equals("");
 	}
 	
 	@Command("salva")

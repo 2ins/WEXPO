@@ -19,21 +19,14 @@ public static ArrayList<UserViewBean> executeQweryMany(String sql, Connection co
 		System.out.println(sql);
 		ArrayList<UserViewBean> list = new ArrayList<UserViewBean>();
 		UserViewParser parser = new UserViewParser();
-		try{
-			Statement stmt = conn.createStatement();
-			ResultSet resultSet = stmt.executeQuery(sql);
-			
-			while (resultSet.next()){
-				UserViewBean bean = parser.parseBean(resultSet);
-				list.add(bean);
-		    }
-			
-			return list;
-			
-		}finally{
-			conn.close();
-		}
-	
+		Statement stmt = conn.createStatement();
+		ResultSet resultSet = stmt.executeQuery(sql);
+		while (resultSet.next()){
+			UserViewBean bean = parser.parseBean(resultSet);
+			list.add(bean);
+	    }
+		return list;
+
 }
 
 

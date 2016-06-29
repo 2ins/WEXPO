@@ -9,6 +9,7 @@ import it.wexpo.utils.DomainMapper;
 public class UsersParser implements BeanParser<UsersBean>{
 	public UsersBean parseBean (ResultSet res) throws SQLException{
 		UsersBean bean = new UsersBean();
+		
 		bean.setUserId(res.getLong("user_id"));
 		bean.setUserNome(res.getString("user_nome"));
 		bean.setUserCognome(res.getString("user_cognome"));
@@ -23,6 +24,14 @@ public class UsersParser implements BeanParser<UsersBean>{
 		bean.setUserPassword(res.getString("user_password"));
 		bean.setUserIdRuolo(res.getLong("user_id_ruolo"));
 		bean.setUserActive(res.getInt("user_active"));
+		
+		bean.setWebsite(res.getString("website"));
+		bean.setYoutubeLink(res.getString("youtube_link"));
+		bean.setGoogleLink(res.getString("google_link"));
+		bean.setTwitterLink(res.getString("twitter_link"));
+		bean.setFacebookLink(res.getString("facebook_Link"));
+		
+		bean.setUserDataIns(res.getDate("user_data_ins"));
 		
 		try {
 			bean.setRuolo(DomainMapper.getRuolo(bean.getUserIdRuolo()));

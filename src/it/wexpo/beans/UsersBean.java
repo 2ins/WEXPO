@@ -24,6 +24,14 @@ public class UsersBean extends AutomationBean{
 	private RuoliBean ruolo;
 	private ActiveBean stato;
 	
+	private String website;
+	
+	private String facebookLink;
+	private String youtubeLink;
+	private String googleLink;
+	private String twitterLink;
+	
+	private Date userDataIns;
 
 	public Long getUserId()  {
 		return this.userId;
@@ -120,6 +128,8 @@ public class UsersBean extends AutomationBean{
 		if (userActive==1) return true;
 		return false;
 	}
+	
+	
 	public RuoliBean getRuolo() {
 		return ruolo;
 	}
@@ -142,6 +152,42 @@ public class UsersBean extends AutomationBean{
 		}else{
 			this.userActive = null;
 		}
+	}
+	public String getWebsite() {
+		return website;
+	}
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
+	public String getYoutubeLink() {
+		return youtubeLink;
+	}
+	public void setYoutubeLink(String youtubeLink) {
+		this.youtubeLink = youtubeLink;
+	}
+	public String getGoogleLink() {
+		return googleLink;
+	}
+	public void setGoogleLink(String googleLink) {
+		this.googleLink = googleLink;
+	}
+	public String getTwitterLink() {
+		return twitterLink;
+	}
+	public void setTwitterLink(String twitterLink) {
+		this.twitterLink = twitterLink;
+	}
+	public Date getUserDataIns() {
+		return userDataIns;
+	}
+	public void setUserDataIns(Date userDataIns) {
+		this.userDataIns = userDataIns;
 	}
 	
 	

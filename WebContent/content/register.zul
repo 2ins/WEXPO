@@ -10,69 +10,106 @@
 			</n:div>
 			<n:div class="w-nome row">
 				<n:label class="col-md-4">
-				   	Nome*
+				   	${labels.nome}*
 				</n:label>
 				<textbox value="@bind(vm.user.userNome)" onChange="@command('refresh')"  onOk="@command('refresh')"  class="col-md-8" />
 			</n:div>
 			<n:div class="w-cognome row">
 				<n:label class="col-md-4">
-				    Cognome*
+				    ${labels.cognome}*
 				</n:label>
 				<textbox value="@bind(vm.user.userCognome)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
 			</n:div>
 			<n:div class="w-dataNascita row">
 				<n:label class="col-md-4">
-				    Data di nascita
+				    ${labels.datanascita}
 				</n:label>
 				<datebox value="@bind(vm.user.userDataNascita)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
 			</n:div>
 			<n:div class="w-luogoResidenza row">
 				<n:label class="col-md-4">
-				    Luogo di residenza
+				    ${labels.luogoresidenza}
 				</n:label>
 				<textbox value="@bind(vm.user.userLuogoResidenza)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
 			</n:div>  	
 			<n:div class="w-citta row">
 				<n:label class="col-md-4">
-				    Citta
+				     ${labels.citta}
 				</n:label>
 				<textbox value="@bind(vm.user.userCitta)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />  
 			</n:div>	
 			<n:div class="w-nazione row">
 				<n:label class="col-md-4">
-					Nazione
+					 ${labels.nazione}
 				</n:label>
 				<textbox value="@bind(vm.user.userNazione)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					 ${labels.website}
+				</n:label>
+				<textbox value="@bind(vm.user.website)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					 ${labels.facebooklink}
+				</n:label>
+				<textbox value="@bind(vm.user.facebookLink)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					 ${labels.youtubelink}
+				</n:label>
+				<textbox value="@bind(vm.user.youtubeLink)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
 			</n:div>    
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					 ${labels.googlelink}
+				</n:label>
+				<textbox value="@bind(vm.user.googleLink)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>   
+			<n:div class="w-nazione row">
+				<n:label class="col-md-4">
+					 ${labels.twitterlink}
+				</n:label>
+				<textbox value="@bind(vm.user.twitterLink)" onChange="@command('refresh')"  onOk="@command('refresh')" class="col-md-8" />
+			</n:div>   
 			<n:div class="w-uploadFoto row">
 				<n:label class="col-md-4">
-				    Foto
+				     ${labels.foto}
 				</n:label>
 				<button label="Upload" upload="true,native" onUpload="@command('onUploadFoto',upEvent=event)" class="col-md-8">  </button>
-			</n:div>   
-			<!--	
+			</n:div>
+			<n:div class="w-uploadFoto row">
+			    <n:label class="col-md-4"></n:label>
+				<image src="@load(vm.getImage())" class="col-md-8"/>
+			</n:div>    
+			 	
 			<n:div class="w-curricula row">
 				<n:label class="col-md-4">
-				    Curriculum Vitae
+				     ${labels.curriculumvitae}
 				</n:label>
 				<button label="Upload" upload="true" onUpload="@command('onUploadCv',upEvent=event)" class="col-md-8" >  </button>
 			</n:div> 
-			-->    
+			<n:div class="w-uploadFoto row">
+			    <label visible="@load(not empty vm.cv.immagineId)" onClick="@command('apriCv')" class="col-md-4">Apri cv in altro tab</label>
+			</n:div>   
+			   
 			<n:div class="w-email row">
 				<n:label class="col-md-4">
-					Email*
+					 ${labels.email}*
 				</n:label>
 				<textbox onChange="@command('refresh')"   onOk="@command('refresh')" constraint="/.+@.+\.[a-z]+/: Inserisci un indirizzo email corretto" value="@bind(vm.user.userEmail)" class="col-md-8"/>
 			</n:div>     
 			<n:div class="w-password row">
 				<n:label class="col-md-4">
-					Password*
+					 ${labels.password}*
 				</n:label>
 				<textbox onChange="@command('refresh')"  onOk="@command('refresh')" type="password" value="@bind(vm.user.userPassword)" class="col-md-8" />
 			</n:div>
 			<n:div class="w-repassword row">
 				<n:label class="col-md-4">
-					Ripeti Password*
+					 ${labels.ripetipassword}*
 				</n:label>
 				<textbox onChange="@command('refresh')"  onOk="@command('refresh')" type="password" value="@bind(vm.re_password)" class="col-md-8" />
 			</n:div>	

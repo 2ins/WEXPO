@@ -30,7 +30,7 @@ public class UserViewParser implements BeanParser<UserViewBean>{
 			bean.setOperaRateCritFeeds(res.getInt("opera_rate_crit_feeds"));
 			bean.setOperaRatePopFeeds(res.getInt("opera_rate_pop_feeds"));
 			//solo per ricerca utenti
-			bean.setNumeroOpere(res.getInt("opere")-1);
+			bean.setNumeroOpere(res.getInt("opere"));
 			
 		}catch(Exception e){
 			

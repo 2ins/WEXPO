@@ -14,7 +14,7 @@ public class DbUtils {
 		
 		return getConnFromJndi();
 	}
-	
+	/*
 	public static Connection getConn() throws SQLException{
 		DriverManager.registerDriver (new com.mysql.jdbc.Driver());
 		String jdbcConnectionUrl = "jdbc:mysql://127.0.0.1:3306/DIO";
@@ -26,7 +26,7 @@ public class DbUtils {
 		conn.setAutoCommit(false);
 		return conn;
 	}
-	
+	*/
 public static Connection getConnFromJndi() throws   SQLException{
 		
 		Context ctx;

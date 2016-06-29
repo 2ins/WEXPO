@@ -9,6 +9,7 @@ import it.wexpo.beans.OpereBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.dao.FeedBackDao;
 import it.wexpo.dao.OpereDao;
+import it.wexpo.dao.QueryGenerator;
 import it.wexpo.dao.SqlQuery;
 import it.wexpo.utils.DbUtils;
 
@@ -127,10 +128,15 @@ public class FeedbackBusiness {
 		
 	}
 	
-	public static ArrayList<FeedbackViewBean> caricaFeedbackViewList(Long operaId) throws SQLException {
+	public static ArrayList<FeedbackViewBean> caricaFeedbackViewList(Long operaId, String type) throws SQLException {
 		Connection conn = DbUtils.getMySqlConn();
 		try {
-			String sql = SqlQuery.FEED_USER_BY_OPERA.replaceAll("\\?", operaId.toString());
+			String sql = "";
+			if (type.equalsIgnoreCase("POP")){
+				sql = QueryGenerator.getInstance().getFeedbackPopOpera(operaId);
+			}else{
+				sql = QueryGenerator.getInstance().getFeedbackCritOpera(operaId);
+			}
 			ArrayList<FeedbackViewBean> list = FeedBackDao.executeQweryMany(sql, conn);
 			
 			return list;

@@ -31,6 +31,14 @@ public class UsersAutoDao extends GenericDao<UsersBean>{
 		DBmap.put( "user_password",bean.getUserPassword());
 		DBmap.put( "user_id_ruolo",bean.getUserIdRuolo());
 		DBmap.put( "user_active",bean.getUserActive());
+		
+		DBmap.put( "website",bean.getWebsite());
+		DBmap.put( "facebook_link",bean.getFacebookLink());
+		DBmap.put( "twitter_link",bean.getTwitterLink());
+		DBmap.put( "youtube_link",bean.getYoutubeLink());
+		DBmap.put( "google_link",bean.getGoogleLink());
+		
+		DBmap.put( "user_data_ins",bean.getUserDataIns());
 	
 	}
 

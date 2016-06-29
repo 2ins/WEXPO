@@ -25,7 +25,19 @@
         	</template>
         </combobox>
         </column>
-    <column label="attiva" > <separator/> <label value="*" /> </column>
+    <column label="attiva" > <separator/> 
+
+	<combobox width="99%"
+     	model="@load(vm.stati)"
+      	selectedItem="@bind(vm.ricerca.stato)">
+   			<template name="model" var="item">
+            	<comboitem label="@load(item.desc)"/>
+        	</template>
+        </combobox>
+
+ </column>
+    
+    <column label="data inserimento" sort="auto(user.userDataIns)"> <separator/> <label value="*" /> </column>
   </columns>
   <template name="model">
     <row style="@load(each.user.style)">
@@ -60,9 +72,15 @@
        
    		
       <div>
-	      <button width="75px" style="color:green;" label="attiva" onClick="@command('attiva',par=each)" visible="@load(not each.user.active)" />
-	      <button width="75px" style="color:red;" label="disattiva" onClick="@command('disattiva',par=each)" visible="@load(each.user.active)" />
+      		<image src="/img/green.png" visible="@load(each.user.userActive eq 1)" />	
+      		<image src="/img/red.png" visible="@load(each.user.userActive eq 0)" />	
+	      <button width="75px" style="color:green;" label="attiva" onClick="@command('attiva',par=each)" visible="@load(each.user.userActive eq 0)" />
+	      <button width="75px" style="color:red;" label="disattiva" onClick="@command('disattiva',par=each)" visible="@load(each.user.userActive eq 1)" />
+      	  <label value="deve confermare mail" visible="@load(each.user.userActive eq -1)"/>
       </div>
+      
+      <datebox inplace="true" value="@load(each.user.userDataIns)" />
+      
     </row>
   </template>
 </grid>

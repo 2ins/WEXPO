@@ -1,6 +1,7 @@
 package it.wexpo.business;
 
 import it.wexpo.beans.OperaViewBean;
+import it.wexpo.beans.RicercaOperaBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.dao.OpereDao;
 import it.wexpo.dao.QueryGenerator;
@@ -66,10 +67,11 @@ public class BusinessOpere {
 		
 	}
 	
-	public static ArrayList<OperaViewBean> cercaOpereNome(String nome) throws SQLException{
+	public static ArrayList<OperaViewBean> cercaOpereNome(RicercaOperaBean bean) throws SQLException{
 		Connection conn = DbUtils.getMySqlConn();
 		try {
-			String sql = QueryGenerator.getInstance().getOperaSql(0, nome);
+			//String sql = QueryGenerator.getInstance().getOperaSql(0, nome);
+			String sql = QueryGenerator.getInstance().getOperaRicercaSql(bean);
 			System.out.println(sql);
 			return OpereDao.executeQweryMany(sql, conn);
 			

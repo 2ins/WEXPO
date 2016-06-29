@@ -2,30 +2,30 @@
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.SidebarVm')">
 		<n:ul>
 			<n:li>
-				<n:span class="glyphicon glyphicon-comment"></n:span><a href="">Chi siamo</a>
+				<n:span class="glyphicon glyphicon-comment"></n:span><a href="">${labels.chisiamo}</a>
 			</n:li>			
 			<n:li>
-				<n:span class="glyphicon glyphicon-cog"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-cog"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>		
 			<n:li>
-				<n:span class="glyphicon glyphicon-tags"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-tags"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>		
 			<n:li>
-				<n:span class="glyphicon glyphicon-picture"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-picture"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>
 			<n:li>
-				<n:span class="glyphicon glyphicon-headphones"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-headphones"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>
 			<n:li>
-				<n:span class="glyphicon glyphicon-road"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-road"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>
 			<n:li>
-				<n:span class="glyphicon glyphicon-comment"></n:span><a href="">Il progetto</a>
+				<n:span class="glyphicon glyphicon-comment"></n:span><a href="">${labels.ilprogetto}</a>
 			</n:li>	
 			<n:li>
 				<div visible="@load(vm.userLogged)">
 					<n:span class="glyphicon glyphicon-comment"></n:span>
-					<a onClick="@command('esponi')">Esponi</a>
+					<a onClick="@command('esponi')">${labels.esponi}</a>
 				</div>					
 			</n:li>		
 		</n:ul>

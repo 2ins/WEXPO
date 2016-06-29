@@ -34,7 +34,7 @@ public class UsersVm {
 	public void init(){
 		try {
 			ruoli = RuoliSingleton.getInstance().getRuoli();
-			stati = RuoliSingleton.getInstance().getStati();
+			stati = RuoliSingleton.getStatiDomainAdminUsers();
 			list = BusinessAdmin.cerca(ricerca);
 		} catch (Exception e) {
 			Messagebox.show("errore database");

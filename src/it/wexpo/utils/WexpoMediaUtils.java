@@ -7,14 +7,19 @@ import it.wexpo.beans.OperaViewBean;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.zkoss.bind.BindContext;
 import org.zkoss.io.Files;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.UploadEvent;
+
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 public class WexpoMediaUtils {
 	public static String salvaMedia(BindContext ctx,  String mainFolder ) throws IOException {
@@ -73,18 +78,18 @@ public class WexpoMediaUtils {
 			Media media = upEvent.getMedia();
 			String format = media.getFormat();
 			
-			String filePath = getPathFolder(mainFolder);
-		
-			File baseDir = new File(filePath);
-		   
-			if (!baseDir.exists()) {
-			  baseDir.mkdirs();
-			}
+			
 			
 			byte[] bytes = media.getByteData();
 			String fileId=null;
 					
 			try {
+				
+				//Map uploadParams = ObjectUtils.asMap();
+				//uploadParams.put("resource_type", "auto");
+				
+				//Cloudinary cld = new Cloudinary();
+				//Map cloudinaryResult=cld.uploader().upload(bytes, uploadParams);
 				fileId = WexpoCloudinaryBridge.upload(bytes);
 				cloudBean.setId(fileId);
 				cloudBean.setFormat(format);
@@ -137,6 +142,12 @@ public class WexpoMediaUtils {
 		String fileWebPath = Costanti.FILEPATH_WEB + hash;
 		return fileWebPath;
 	}
+	
+public static String getPathWebCvFolder(String hash) {
+		
+		String fileWebPath = Costanti.FILEPATH_WEB_CV + hash;
+		return fileWebPath;
+	}
 
 	public static String getTimeUpdate(Date dt1) {
 		
@@ -165,15 +176,30 @@ public class WexpoMediaUtils {
 
         String suf = "Pubblicato ";
         String pos = " fa";
+        String giorni = " giorni";
+        String ore = " ore";
+        String minuti = " minuti";
+        String secondi = " secondi";
+        
+        String lang = ApplicationUtils.getLanguageEnv();
+       if (lang.equalsIgnoreCase("en")){
+    	    suf = "Published ";
+            pos = " ago";
+            giorni = " days";
+            ore = " hours";
+            minuti = " minutes";
+            secondi = " seconds";
+       }
+        
         if (diffInDays >= 1) {
-           return ( suf+diffInDays+" giorni"+pos);
+           return ( suf+diffInDays+giorni+pos);
             
         } else if (diffHours > 0) {
-        	return ( suf+diffHours+" ore"+pos);
+        	return ( suf+diffHours+ore+pos);
         } else if ((diffHours == 24 || diffHours == 0) && (diffMinutes >= 1)) {
-        	return ( suf+diffMinutes+" minuti"+pos);
+        	return ( suf+diffMinutes+minuti+pos);
         }else {
-        	return ( suf+diffSeconds+" secondi"+pos);
+        	return ( suf+diffSeconds+secondi+pos);
         }
 		
 	}

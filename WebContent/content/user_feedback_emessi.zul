@@ -6,7 +6,7 @@
 			
 			
 			
-			<n:h3>Feedback emessi</n:h3>
+			<n:h3>${labels.feedbackemessi}</n:h3>
 			<n:div class="w-user-feed">
 		        <label value="@load(vm.totFeedbackEmessi)"></label>
 		    </n:div>
@@ -29,9 +29,11 @@
 				<template name="children" >
 					<n:div class="w-user-feed-item">
 						<n:ul>
+							<!-- 
 							<n:li class="border-btm">
 								<label value="@load(each.feedbackDescrizione)"/>
 							</n:li>
+							-->
 							<n:li class="border-btm">
 								<n:span class="glyphicon glyphicon-star"></n:span>
 								voto: <label value="@load(each.feedbackVoto)"/>

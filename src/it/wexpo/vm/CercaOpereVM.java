@@ -4,6 +4,7 @@ import it.wexpo.beans.FeedbackBean;
 import it.wexpo.beans.ImmaginiBean;
 import it.wexpo.beans.OperaViewBean;
 import it.wexpo.beans.OpereBean;
+import it.wexpo.beans.RicercaOperaBean;
 import it.wexpo.beans.UsersBean;
 import it.wexpo.business.BusinessDao;
 import it.wexpo.business.BusinessOpere;
@@ -22,11 +23,12 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Messagebox;
 
-public class CercaOpereVM {
+public class CercaOpereVM extends GeneralVm{
+	
 	private ArrayList<OperaViewBean> opere ;
-	private String operaNome;
+	private RicercaOperaBean ricerca = new RicercaOperaBean();
 	
-	
+
 	
 	@Init
 	@NotifyChange("*")
@@ -40,7 +42,7 @@ public class CercaOpereVM {
 	public void cerca(){
 		try {
 			System.out.println("cerca");
-			opere =BusinessOpere.cercaOpereNome(operaNome);
+			opere =BusinessOpere.cercaOpereNome(ricerca);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			Messagebox.show("errore database");
@@ -91,15 +93,16 @@ public class CercaOpereVM {
 	}
 
 
-	public String getOperaNome() {
-		return operaNome;
+	public RicercaOperaBean getRicerca() {
+		return ricerca;
 	}
 
 
-	public void setOperaNome(String operaNome) {
-		this.operaNome = operaNome;
+	public void setRicerca(RicercaOperaBean ricerca) {
+		this.ricerca = ricerca;
 	}
-	
+
+
 	
 		
 		

@@ -3,7 +3,7 @@
 	<div apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.TagVm')">
     	
     	
-    	<label value="TAGS" />
+    		${labels.tags}
     	
 		<div children="@load(vm.operaTagList)">
 			<template name="children" >
@@ -17,7 +17,7 @@
 	<div visible="@load(vm.evaluateTagEnabled())">
 		<separator/><separator/><separator/><separator/><separator/><separator/>
     	<textbox value="@bind(vm.bean.tagDesc)" />
-		<button label="salva" onClick="@command('salva')" />	
+		<button label="${labels.salva}" onClick="@command('salva')" />	
 		</div>
     </div>    
 </zk>

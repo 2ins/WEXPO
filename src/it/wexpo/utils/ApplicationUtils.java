@@ -1,8 +1,10 @@
 package it.wexpo.utils;
 
 import java.sql.SQLException;
+import java.util.Locale;
 
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.http.SimpleSession;
 
 import it.wexpo.autodao.UsersAutoDao;
@@ -12,7 +14,13 @@ import it.wexpo.business.BusinessDao;
 
 public class ApplicationUtils {
 	
-	
+	public static void checkUpLoggedUser() {
+		SimpleSession s = (SimpleSession) Executions.getCurrent().getDesktop().getSession();
+		UsersBean user = (UsersBean)s.getAttribute("USER");
+		if (user==null){
+			Executions.sendRedirect("index.zul");
+		}
+	}
 	
 	
 	public static UsersBean getLoggedUser() {
@@ -57,5 +65,11 @@ public class ApplicationUtils {
 		s.removeAttribute("SELECTED_USER");
 		s.removeAttribute("OPERA");
 		s.removeAttribute("RUOLO");
+	}
+	
+	public static String getLanguageEnv(){
+		Locale locale = (Locale)Sessions.getCurrent().getAttribute(org.zkoss.web.Attributes.PREFERRED_LOCALE);
+		String language = locale.getLanguage();
+		return language;
 	}
 }

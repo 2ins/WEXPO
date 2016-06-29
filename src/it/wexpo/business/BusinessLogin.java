@@ -17,19 +17,21 @@ public class BusinessLogin {
 	
 	
 	
-public static Long salvaUtenteAutenticaInviaMailTransational(UsersBean user,ImmaginiBean imgBean) throws Exception{
+public static void salvaUtenteAutenticaInviaMailTransational(UsersBean user,ImmaginiBean imgBean, ImmaginiBean cv) throws Exception{
 		
 		Connection conn = DbUtils.getMySqlConn();
 		
 		try{
+			boolean inviaMailCondition = (user.getUserId()==null);
+			Dao.salvaUtenteImmagineAuth(user, imgBean, cv,  conn);
 			
-			Long x = Dao.salvaUtenteImmagineAuth(user, imgBean, conn);
-			
- 			BusinessAutenticazione.inserisciAuthInviaMail(user,conn);
+			if(inviaMailCondition){
+				BusinessAutenticazione.inserisciAuthInviaMail(user,conn);
+			}
 			
 			conn.commit();
 			
- 			return x;
+ 			
  			
 		}catch(Exception e){
 			e.printStackTrace();
