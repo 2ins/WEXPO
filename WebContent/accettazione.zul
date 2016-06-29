@@ -1,0 +1,12 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window width="40%"  id="win" position="center,center" closable="true" border="normal" sizable="true"
+apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('it.wexpo.vm.AccettaTerminiVm')">
+		<div>
+INFORMATIVA SULLA PRIVACY 
+	</div>
+		<checkbox label="ho letto i temini ed accetto" checked="@bind(vm.accetta)" />
+		<button disabled="@load(not vm.accetta)" label="Ok"  onClick="@command('accettaOk')" />
+	</window>
+
+</zk>
