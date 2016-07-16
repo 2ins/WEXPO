@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TimeInfoTest {
-//test git ///////////////////////////////// maronn
+//test git ///////////// maronn
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Date d1 = new Date();
