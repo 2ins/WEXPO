@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class TestMySql {
 public static ArrayList<TestBean>  executeQweryMany(String sql, Connection conn) throws SQLException{
-		
+		//test git
 		ArrayList<TestBean> list = new ArrayList<TestBean>();
 		TestParser parser = new TestParser();
 		try{
