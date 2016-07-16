@@ -7,7 +7,7 @@ public class TestBean extends AutomationBean{
 	
 	private String x1;
 	private String x2;
-	
+	//test svn pull
 
 	
 	public String getX1() {
